@@ -4,5 +4,7 @@
 
 body {
   @apply bg-no-repeat bg-gray-900 bg-top;
-  background-image: url('/assets/bg-gradient.svg')
+
+  background-image: url('/assets/bg-gradient.svg');
+  -webkit-font-smoothing: antialised;
 }
