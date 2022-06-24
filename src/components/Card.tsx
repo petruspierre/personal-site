@@ -10,7 +10,7 @@ export const Card = (props: CardProps) => {
   return (
     <a 
       href={props.url}
-      className="flex flex-col w-[200px] rounded-2xl overflow-hidden h-[240px] bg-blue-900 bg-gradient-to-bl from-blue-500 to-blue-900 group"
+      className="flex flex-col w-full md:w-[200px] rounded-2xl overflow-hidden h-[240px] bg-blue-900 bg-gradient-to-bl from-blue-500 to-blue-900 group"
     >
       <img 
         src={props.imageUrl}
@@ -19,7 +19,7 @@ export const Card = (props: CardProps) => {
       />
   
       <div className="p-2 transition-all duration-300 overflow-hidden relative group-hover:p-4">
-        <div className="flex items-center justify-center h-[80px] group-hover:h-auto">
+        <div className="flex items-center justify-center h-[4rem] group-hover:h-auto">
           <p className="text-white text-bold text-lg text-center line-clamp-2 group-hover:line-clamp-none">{props.title}</p>
         </div>
       </div>

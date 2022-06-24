@@ -8,3 +8,11 @@ body {
   background-image: url('/assets/bg-gradient.svg');
   -webkit-font-smoothing: antialised;
 }
+
+.swiper-item {
+  @apply rounded-lg text-2xl font-bold text-white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
