@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCards } from 'swiper';
+import { PaperPlaneTilt } from 'phosphor-react';
 
 import { Card } from "../components/Card"
 import { Header } from "../components/Header"
@@ -159,6 +160,20 @@ export const Home = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        <div id="visit-blog" className="w-full max-w-5xl mx-auto px-4 md:px-0 py-8">
+          <h2 className="text-white text-3xl font-serif">Visit my personal blog</h2>
+          <h3 className="text-white font-sans text-2xl mt-5 mb-4">There you’ll find some articles I’ve wrote to talk about the stuff I’m studying.</h3>
+
+          <a href="/blog" className='px-4 py-2 bg-blue-900 text-white font-bold rounded-lg w-auto flex items-center gap-2 w-fit'>
+            <span>
+              Let's read
+            </span>
+            <div>
+              <PaperPlaneTilt size={18} weight="bold" />
+            </div>
+          </a>
         </div>
       </main>
     </div>
