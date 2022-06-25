@@ -81,7 +81,7 @@ export const Home = () => {
         <div className="my-4 md:my-8 w-full max-w-5xl mx-auto px-4 md:p-0">
           <p className="text-white text-2xl">
             Here you’ll find articles, videos, projects and my contact info.<br />
-            Below there is some highlits I’ve separated for you.
+            Below there is some highlights I’ve separated for you.
           </p>
 
           <div className="flex flex-wrap mt-4 gap-8 flex-col md:flex-row">
@@ -177,7 +177,7 @@ export const Home = () => {
 
         <div id="contact" className='w-full max-w-5xl mx-auto px-4 md:px-0 py-8'>
           <h2 className="text-white text-3xl font-serif">Contact me</h2>
-          <h3 className="text-white font-sans text-2xl mt-5 mb-4">Here’s how you can reach me, feel free to talk about anything, will be awesome to do some networking :)</h3>
+          <h3 className="text-white font-sans text-2xl mt-5 mb-4">Feel free to reach me and talk about anything, will be awesome to do some networking :)</h3>
 
           <div className='flex flex-col sm:flex-row gap-4'>
             <a
