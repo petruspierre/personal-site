@@ -7,17 +7,44 @@ import { Header } from "../components/Header"
 import "swiper/css";
 import "swiper/css/effect-cards";
 
+const companies = [
+  {
+    name: 'Codeminer42',
+    image: '/assets/codeminer.png',
+  },
+  {
+    name: 'SISCOM',
+    image: '/assets/siscom.png'
+  },
+  {
+    name: 'BTG Pactual',
+    image: '/assets/btg.svg'
+  },
+  {
+    name: 'Intellimize',
+    image: '/assets/intellimize.jpeg'
+  },
+  {
+    name: 'Edlio',
+    image: '/assets/edlio.png'
+  },
+  {
+    name: 'TAS',
+    image: '/assets/tas.png'
+  },
+]
+
 export const Home = () => {
   return (
     <div>
       <Header />
-      <main className="w-full px-4 lg:p-0">
-        <div className="mt-10 md:mt-20 w-full max-w-5xl mx-auto">
+      <main className="w-full lg:p-0">
+        <div className="mt-10 md:mt-15 w-full max-w-5xl mx-auto px-4 md:p-0">
           <span className="text-white text-5xl font-serif">Hi!</span>
           <h1 className="text-white font-serif text-3xl mt-8">Welcome to my place on Internet!</h1>
         </div>
 
-        <div className="my-4 md:my-8 w-full max-w-5xl mx-auto">
+        <div className="my-4 md:my-8 w-full max-w-5xl mx-auto px-4 md:p-0">
           <p className="text-white text-2xl">
             Here you’ll find articles, videos, projects and my contact info.<br />
             Below there is some highlits I’ve separated for you.
@@ -49,7 +76,7 @@ export const Home = () => {
 
         </div>
 
-        <div className="flex flex-col w-full p-4 py-8 relative items-center justify-center">
+        <div className="flex flex-col w-full p-4 py-8 relative items-center justify-center bg-gradient-to-r from-blue-500 to-blue-900">
           <h2 className="text-white text-3xl font-serif">Projects</h2>
           <h3 className="text-white text-lg">Now you can check some projects I’ve built.</h3>
 
@@ -64,39 +91,75 @@ export const Home = () => {
             }}
           >
             <SwiperSlide className="swiper-item bg-white">
-              <a href="https://play.google.com/store/apps/details?id=com.gyntel" className="w-full h-full flex items-center justify-center">
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.gyntel"
+                className="w-full h-full flex items-center justify-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="/assets/gyntel.png" alt="Gyntel"/>
               </a>
             </SwiperSlide>
             <SwiperSlide className="swiper-item bg-[#59657D]">
-              <a href="https://www.letrinha.xyz" className="w-full h-full flex items-center justify-center">
+              <a 
+                href="https://www.letrinha.xyz"
+                className="w-full h-full flex items-center justify-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="/assets/letrinha.png" alt="Letrinha"/>
               </a>
             </SwiperSlide>
             <SwiperSlide className="swiper-item bg-[#DC143C]">
-              <a href="https://www.github.com/petruspierre/seuchef" className="w-full h-full flex items-center justify-center">
+              <a 
+                href="https://www.github.com/petruspierre/seuchef" 
+                className="w-full h-full flex items-center justify-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="/assets/seuchef.png" alt="Seu chef"/>
               </a>
             </SwiperSlide>
             <SwiperSlide className="swiper-item bg-white">
-              <a href="https://play.google.com/store/apps/details?id=com.petruspierre.cidadedegoias" className="w-full h-full flex items-center justify-center">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.petruspierre.cidadedegoias"
+                className="w-full h-full flex items-center justify-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="/assets/goias.png" alt="Cidade de Goiás"/>
               </a>
             </SwiperSlide>
             <SwiperSlide className="swiper-item bg-[#1F3E93]">
-              <a href="https://www.github.com/petruspierre/checaaqui" className="w-full h-full flex items-center justify-center">
+              <a 
+                href="https://www.github.com/petruspierre/checaaqui"
+                className="w-full h-full flex items-center justify-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="/assets/checa-aqui.png" alt="Checa Aqui"/>
               </a>
             </SwiperSlide>
           </Swiper>
-
-          <div className="absolute top-0 bottom-0 left-0 right-0 bg-blue-900 opacity-75 -z-10"></div>
         </div>
 
-        {/* <div className="flex flex-col w-full p-4 items-center justify-center">
-          <h2 className="text-white text-3xl font-serif">Companies</h2>
-          <h3 className="text-white text-lg">Here's some companies I’ve worked for.</h3>
-        </div> */}
+        <div className="flex flex-col w-full p-4 py-8 bg-white">
+          <div className="flex-1 max-w-5xl mx-auto items-center justify-center">
+            <h2 className="text-gray-900 text-3xl font-serif text-center">Companies</h2>
+            <h3 className="text-gray-900 text-lg text-center">Here's some companies I’ve worked for.</h3>
+
+            <div className="flex flex-wrap gap-8 p-4 items-center justify-around mt-5">
+              {companies.map(company => (
+                <img 
+                  src={company.image}
+                  alt={company.name}
+                  className="w-full md:w-auto md:min-w-[250px] max-h-10 object-contain"
+                  draggable={false}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   )
