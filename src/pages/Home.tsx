@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCards } from 'swiper';
-import { PaperPlaneTilt } from 'phosphor-react';
+import { DiscordLogo, Envelope, GithubLogo, InstagramLogo, PaperPlaneTilt } from 'phosphor-react';
 
 import { Card } from "../components/Card"
 import { Header } from "../components/Header"
@@ -172,6 +172,61 @@ export const Home = () => {
               <PaperPlaneTilt size={18} weight="bold" />
             </div>
           </a>
+        </div>
+
+        <div id="contact" className='w-full max-w-5xl mx-auto px-4 md:px-0 py-8'>
+          <h2 className="text-white text-3xl font-serif">Contact me</h2>
+          <h3 className="text-white font-sans text-2xl mt-5 mb-4">Here’s how you can reach me, feel free to talk about anything, will be awesome to do some networking :)</h3>
+
+          <div className='flex flex-col sm:flex-row gap-4'>
+            <a
+              href="https://discord.com/"
+              className='px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+            >
+              <div>
+                <DiscordLogo size={18} />
+              </div>
+              <span>
+                petrus#0001
+              </span>
+            </a>
+
+            <a
+              href="mailto:contato@petrus.dev.br?subject=Contact"
+              className='px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+            >
+              <div>
+                <Envelope size={18} />
+              </div>
+              <span>
+                contato@petrus.dev.br
+              </span>
+            </a>
+
+            <a
+              href="https://github.com/petruspierre"
+              className='px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+            >
+              <div>
+                <GithubLogo size={18} />
+              </div>
+              <span>
+                petruspierre
+              </span>
+            </a>
+
+            <a
+              href="https://instagram.com/petrus.pierre"
+              className='px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+            >
+              <div>
+                <InstagramLogo size={18} />
+              </div>
+              <span>
+                petrus.pierre
+              </span>
+            </a>
+          </div>
         </div>
       </main>
     </div>
