@@ -125,7 +125,7 @@ export const Home = () => {
             }}
           >
             {projects.map(project => (
-              <SwiperSlide className={`swiper-item ${project.color}`}>
+              <SwiperSlide key={project.name} className={`swiper-item ${project.color}`}>
                 <a 
                   href={project.link}
                   className="w-full h-full flex items-center justify-center"
@@ -147,6 +147,7 @@ export const Home = () => {
             <div className="flex flex-wrap gap-8 p-4 items-center justify-around mt-5">
               {companies.map(company => (
                 <img 
+                  key={company.name}
                   src={company.image}
                   alt={company.name}
                   className="w-full md:w-auto md:min-w-[250px] max-h-10 object-contain"
