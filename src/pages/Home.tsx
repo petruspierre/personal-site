@@ -8,6 +8,39 @@ import { Header } from "../components/Header"
 import "swiper/css";
 import "swiper/css/effect-cards";
 
+const projects = [
+  {
+    name: 'Gyntel',
+    link: 'https://play.google.com/store/apps/details?id=com.gyntel',
+    image: '/assets/gyntel.png',
+    color: 'bg-white'
+  },
+  {
+    name: 'Letrinha',
+    link: 'https://letrinha.xyz',
+    image: '/assets/letrinha.png',
+    color: 'bg-[#59657D]'
+  },
+  {
+    name: 'Seu chef',
+    link: 'https://www.github.com/petruspierre/seuchef',
+    image: '/assets/seuchef.png',
+    color: 'bg-[#DC143C]'
+  },
+  {
+    name: 'Cidade de Goiás',
+    link: 'https://play.google.com/store/apps/details?id=com.petruspierre.cidadedegoias',
+    image: '/assets/goias.png',
+    color: 'bg-white'
+  },
+  {
+    name: 'Checa Aqui',
+    link: 'https://www.github.com/petruspierre/checaaqui',
+    image: '/assets/checa-aqui.png',
+    color: 'bg-[#1F3E93]'
+  },
+]
+
 const companies = [
   {
     name: 'Codeminer42',
@@ -91,56 +124,18 @@ export const Home = () => {
               disableOnInteraction: true,
             }}
           >
-            <SwiperSlide className="swiper-item bg-white">
-              <a 
-                href="https://play.google.com/store/apps/details?id=com.gyntel"
-                className="w-full h-full flex items-center justify-center"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/assets/gyntel.png" alt="Gyntel"/>
-              </a>
-            </SwiperSlide>
-            <SwiperSlide className="swiper-item bg-[#59657D]">
-              <a 
-                href="https://www.letrinha.xyz"
-                className="w-full h-full flex items-center justify-center"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/assets/letrinha.png" alt="Letrinha"/>
-              </a>
-            </SwiperSlide>
-            <SwiperSlide className="swiper-item bg-[#DC143C]">
-              <a 
-                href="https://www.github.com/petruspierre/seuchef" 
-                className="w-full h-full flex items-center justify-center"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/assets/seuchef.png" alt="Seu chef"/>
-              </a>
-            </SwiperSlide>
-            <SwiperSlide className="swiper-item bg-white">
-              <a
-                href="https://play.google.com/store/apps/details?id=com.petruspierre.cidadedegoias"
-                className="w-full h-full flex items-center justify-center"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/assets/goias.png" alt="Cidade de Goiás"/>
-              </a>
-            </SwiperSlide>
-            <SwiperSlide className="swiper-item bg-[#1F3E93]">
-              <a 
-                href="https://www.github.com/petruspierre/checaaqui"
-                className="w-full h-full flex items-center justify-center"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/assets/checa-aqui.png" alt="Checa Aqui"/>
-              </a>
-            </SwiperSlide>
+            {projects.map(project => (
+              <SwiperSlide className={`swiper-item ${project.color}`}>
+                <a 
+                  href={project.link}
+                  className="w-full h-full flex items-center justify-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={project.image} alt={project.name}/>
+                </a>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
 
@@ -166,7 +161,10 @@ export const Home = () => {
           <h2 className="text-white text-3xl font-serif">Visit my personal blog</h2>
           <h3 className="text-white font-sans text-2xl mt-5 mb-4">There you’ll find some articles I’ve wrote to talk about the stuff I’m studying.</h3>
 
-          <a href="/blog" className='px-4 py-2 bg-blue-900 text-white font-bold rounded-lg w-auto flex items-center gap-2 w-fit'>
+          <a
+            href="/blog"
+            className='px-4 py-2 bg-blue-900 text-white font-bold rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+          >
             <span>
               Let's read
             </span>
