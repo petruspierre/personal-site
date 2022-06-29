@@ -71,7 +71,7 @@ const companies = [
 export const Home = () => {
   return (
     <div>
-      <Header />
+      <Header showNav />
       <main className="w-full lg:p-0">
         <div className="mt-10 md:mt-15 w-full max-w-5xl mx-auto px-4 md:p-0">
           <span className="text-white text-5xl font-serif">Hi!</span>
