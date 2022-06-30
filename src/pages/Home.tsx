@@ -182,10 +182,10 @@ export const Home = () => {
           <h2 className="text-white text-3xl font-serif">{t('contact.title')}</h2>
           <h3 className="text-white font-sans text-2xl mt-5 mb-4">{t('contact.description')}</h3>
 
-          <div className='flex flex-col sm:flex-row gap-4'>
+          <div className='flex flex-col flex-wrap sm:flex-row gap-4'>
             <a
               href="https://discord.com/"
-              className='px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+              className='min-w-[200]px px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-full sm:w-auto hover:bg-blue-500 transition-colors'
             >
               <div>
                 <DiscordLogo size={18} />
@@ -197,7 +197,7 @@ export const Home = () => {
 
             <a
               href="mailto:contato@petrus.dev.br?subject=Contact"
-              className='px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+              className='min-w-[200]px px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-full sm:w-auto hover:bg-blue-500 transition-colors'
             >
               <div>
                 <Envelope size={18} />
@@ -209,7 +209,7 @@ export const Home = () => {
 
             <a
               href="https://github.com/petruspierre"
-              className='px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+              className='min-w-[200]px px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-full sm:w-auto hover:bg-blue-500 transition-colors'
             >
               <div>
                 <GithubLogo size={18} />
@@ -221,7 +221,7 @@ export const Home = () => {
 
             <a
               href="https://www.linkedin.com/in/petrus-pierre/"
-              className='px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+              className='min-w-[200]px px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-full sm:w-auto hover:bg-blue-500 transition-colors'
             >
               <div>
                 <LinkedinLogo size={18} />
@@ -233,7 +233,7 @@ export const Home = () => {
 
             <a
               href="https://instagram.com/petrus.pierre"
-              className='px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+              className='min-w-[200]px px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-full sm:w-auto hover:bg-blue-500 transition-colors'
             >
               <div>
                 <InstagramLogo size={18} />
