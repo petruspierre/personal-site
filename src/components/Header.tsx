@@ -30,8 +30,6 @@ export const Header = (props: HeaderProps) => {
             {t('nav.contact')}
           </a>
         )}
-
-        <LanguageSelector />
       </div>
     </header>
   )

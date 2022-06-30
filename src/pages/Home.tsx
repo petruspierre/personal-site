@@ -8,6 +8,7 @@ import { Header } from "../components/Header"
 import "swiper/css";
 import "swiper/css/effect-cards";
 import { useTranslation } from 'react-i18next';
+import { LanguageSelector } from '../components/LanguageSelector';
 
 const projects = [
   {
@@ -76,13 +77,13 @@ export const Home = () => {
     <div>
       <Header showNav />
       <main className="w-full lg:p-0">
-        <div className="mt-10 md:mt-15 w-full max-w-5xl mx-auto px-4 md:p-0">
+        <div className="mt-10 md:mt-15 w-full max-w-5xl mx-auto px-4 md:p-0 text-center md:text-left">
           <span className="text-white text-5xl font-serif">{t('greetings')}</span>
           <h1 className="text-white font-serif text-3xl mt-8">{t('welcome')}</h1>
         </div>
 
-        <div className="my-4 md:my-8 w-full max-w-5xl mx-auto px-4 md:p-0">
-          <p className="text-white text-2xl">
+        <div className="my-4 md:my-8 w-full max-w-5xl mx-auto px-4 md:p-0 text-center md:text-left">
+          <p className="text-white text-lg md:text-2xl">
             {t('headline.above')}<br />
             {t('headline.below')}
           </p>
@@ -243,6 +244,10 @@ export const Home = () => {
               </span>
             </a>
           </div>
+        </div>
+
+        <div className="max-w-5xl mx-auto px-4 md:px-0 py-8">
+          <LanguageSelector />
         </div>
       </main>
     </div>

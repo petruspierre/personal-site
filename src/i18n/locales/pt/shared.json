@@ -6,5 +6,6 @@
   "cards": {
     "author": "Autor",
     "published": "Publicado em"
-  }
+  },
+  "language": "Idioma:"
 }
