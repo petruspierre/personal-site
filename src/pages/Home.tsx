@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import { useTranslation } from 'react-i18next';
 import { LanguageSelector } from '../components/LanguageSelector';
+import { Footer } from '../components/Footer';
 
 const projects = [
   {
@@ -246,9 +247,7 @@ export const Home = () => {
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 md:px-0 py-8">
-          <LanguageSelector />
-        </div>
+        <Footer />
       </main>
     </div>
   )
