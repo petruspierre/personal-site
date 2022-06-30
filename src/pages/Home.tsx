@@ -1,12 +1,13 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCards } from 'swiper';
-import { DiscordLogo, Envelope, GithubLogo, InstagramLogo, PaperPlaneTilt } from 'phosphor-react';
+import { DiscordLogo, Envelope, GithubLogo, InstagramLogo, LinkedinLogo, PaperPlaneTilt } from 'phosphor-react';
 
 import { Card } from "../components/Card"
 import { Header } from "../components/Header"
 
 import "swiper/css";
 import "swiper/css/effect-cards";
+import { useTranslation } from 'react-i18next';
 
 const projects = [
   {
@@ -69,19 +70,21 @@ const companies = [
 ]
 
 export const Home = () => {
+  const { t } = useTranslation(['home']);
+
   return (
     <div>
       <Header showNav />
       <main className="w-full lg:p-0">
         <div className="mt-10 md:mt-15 w-full max-w-5xl mx-auto px-4 md:p-0">
-          <span className="text-white text-5xl font-serif">Hi!</span>
-          <h1 className="text-white font-serif text-3xl mt-8">Welcome to my place on Internet!</h1>
+          <span className="text-white text-5xl font-serif">{t('greetings')}</span>
+          <h1 className="text-white font-serif text-3xl mt-8">{t('welcome')}</h1>
         </div>
 
         <div className="my-4 md:my-8 w-full max-w-5xl mx-auto px-4 md:p-0">
           <p className="text-white text-2xl">
-            Here you’ll find articles, videos, projects and my contact info.<br />
-            Below there is some highlights I’ve separated for you.
+            {t('headline.above')}<br />
+            {t('headline.below')}
           </p>
 
           <div className="flex flex-wrap mt-4 gap-8 flex-col md:flex-row">
@@ -111,8 +114,8 @@ export const Home = () => {
         </div>
 
         <div className="flex flex-col w-full p-4 py-8 relative items-center justify-center bg-gradient-to-r from-blue-500 to-blue-900">
-          <h2 className="text-white text-3xl font-serif">Projects</h2>
-          <h3 className="text-white text-lg">Now you can check some projects I’ve built.</h3>
+          <h2 className="text-white text-3xl font-serif">{t('projects.title')}</h2>
+          <h3 className="text-white text-lg max-w-3xl text-center mt-2">{t('projects.description')}</h3>
 
           <Swiper
             effect={"cards"}
@@ -141,8 +144,8 @@ export const Home = () => {
 
         <div className="flex flex-col w-full p-4 py-8 bg-white">
           <div className="flex-1 max-w-5xl mx-auto items-center justify-center">
-            <h2 className="text-gray-900 text-3xl font-serif text-center">Companies</h2>
-            <h3 className="text-gray-900 text-lg text-center">Here's some companies I’ve worked for.</h3>
+            <h2 className="text-gray-900 text-3xl font-serif text-center">{t('companies.title')}</h2>
+            <h3 className="text-gray-900 text-lg max-w-3xl text-center mx-auto mt-2">{t('companies.description')}</h3>
 
             <div className="flex flex-wrap gap-8 p-4 items-center justify-around mt-5">
               {companies.map(company => (
@@ -159,15 +162,15 @@ export const Home = () => {
         </div>
 
         <div id="visit-blog" className="w-full max-w-5xl mx-auto px-4 md:px-0 py-8">
-          <h2 className="text-white text-3xl font-serif">Visit my personal blog</h2>
-          <h3 className="text-white font-sans text-2xl mt-5 mb-4">There you’ll find some articles I’ve wrote to talk about the stuff I’m studying.</h3>
+          <h2 className="text-white text-3xl font-serif">{t('blog.title')}</h2>
+          <h3 className="text-white font-sans text-2xl mt-5 mb-4">{t('blog.description')}</h3>
 
           <a
             href="/blog"
             className='px-4 py-2 bg-blue-900 text-white font-bold rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
           >
             <span>
-              Let's read
+              {t('blog.cta')}
             </span>
             <div>
               <PaperPlaneTilt size={18} weight="bold" />
@@ -176,8 +179,8 @@ export const Home = () => {
         </div>
 
         <div id="contact" className='w-full max-w-5xl mx-auto px-4 md:px-0 py-8'>
-          <h2 className="text-white text-3xl font-serif">Contact me</h2>
-          <h3 className="text-white font-sans text-2xl mt-5 mb-4">Feel free to reach me and talk about anything, will be awesome to do some networking :)</h3>
+          <h2 className="text-white text-3xl font-serif">{t('contact.title')}</h2>
+          <h3 className="text-white font-sans text-2xl mt-5 mb-4">{t('contact.description')}</h3>
 
           <div className='flex flex-col sm:flex-row gap-4'>
             <a
@@ -213,6 +216,18 @@ export const Home = () => {
               </div>
               <span>
                 petruspierre
+              </span>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/petrus-pierre/"
+              className='px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors'
+            >
+              <div>
+                <LinkedinLogo size={18} />
+              </div>
+              <span>
+                Petrus Pierre
               </span>
             </a>
 

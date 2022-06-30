@@ -1,0 +1,10 @@
+{ 
+  "nav": {
+    "blog": "blog",
+    "contact": "contato"
+  },
+  "cards": {
+    "author": "Autor",
+    "published": "Publicado em"
+  }
+}

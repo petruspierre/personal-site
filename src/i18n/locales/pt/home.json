@@ -1,0 +1,25 @@
+{
+  "greetings": "Olá!",
+  "welcome": "Bem vindo ao meu pedaço da internet!",
+  "headline": { 
+    "above": "Aqui você vai encontrar meus projetos pessoais, artigos, vídeos e informações de contato.",
+    "below": "Separei para você alguns destaques aqui embaixo:"
+  },
+  "projects": {
+    "title": "Projetos",
+    "description": "Aqui estão alguns projetos que construí. Você pode acessar alguns que estão disponíveis online e contribuir também, pois a maioria são projetos open-source!"
+  },
+  "companies": {
+    "title": "Empresas",
+    "description": "Essas são as empresas as quais já trabalhei. Algumas através de consultoria e freelance, em todas contribui com seus produtos e serviços, agregando valor necessário."
+  },
+  "blog": {
+    "title": "Visite meu blog",
+    "description": "Alguns dos artigos que eu escrevi estão neste blog, aqui escrevo sobre a maioria das coisas que estou atualmente estudando.",
+    "cta": "Vamos ler"
+  },
+  "contact": {
+    "title": "Entre em contato",
+    "description": "Sinta-se a vontade para me chamar em qualquer das redes abaixo para conversar sobre qualquer coisa ou simplesmente fazer networking 🤗"
+  }
+}

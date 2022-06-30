@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Logo } from "./Logo"
 
 interface HeaderProps {
@@ -5,13 +6,15 @@ interface HeaderProps {
 }
 
 export const Header = (props: HeaderProps) => {
+  const { t } = useTranslation(['shared']);
+
   return (
     <header className="w-full flex items-center justify-center p-2 py-8 max-w-5xl mx-auto">
       <div className="text-white h-full flex items-center gap-10">
 
         {props.showNav && (
           <a href="/blog" className="font-serif text-lg hover:underline">
-            blog
+            {t('nav.blog')}
           </a>
         )}
 
@@ -23,7 +26,7 @@ export const Header = (props: HeaderProps) => {
 
         {props.showNav && (
           <a href="#contact" className="font-serif text-lg hover:underline">
-            contact
+            {t('nav.contact')}
           </a>
         )}
       </div>

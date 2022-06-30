@@ -1,0 +1,25 @@
+{
+  "greetings": "Hi!",
+  "welcome": "Welcome to my place on Internet!",
+  "headline": { 
+    "above": "Here you can find my contact information, articles, videos, and projects.",
+    "below": "I've broken down some highlights for you below."
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "You can now look at some of my projects. You can check them out and contribute on your own because most of them are open source and personal projects!"
+  },
+  "companies": {
+    "title": "Companies",
+    "description": "These are a few of the businesses I've worked for. I've contributed to their products and services as a consultant, employee, or independent contractor."
+  },
+  "blog": {
+    "title": "Visit my personal blog",
+    "description": "Some of the articles I've written on my own and that are posted on my blog. Most of them concern topics I'm currently researching.",
+    "cta": "Let's read"
+  },
+  "contact": {
+    "title": "Keep in touch",
+    "description": "Feel free to reach me and talk about anything, will be awesome to do some networking 🤗"
+  }
+}

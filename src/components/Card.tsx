@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface CardProps {
   title: string;
   author: string;
@@ -7,6 +9,8 @@ interface CardProps {
 }
 
 export const Card = (props: CardProps) => {
+  const { t } = useTranslation(['shared']);
+
   return (
     <a 
       href={props.url}
@@ -26,11 +30,11 @@ export const Card = (props: CardProps) => {
   
       <div className="flex flex-col flex-1 gap-2 max-h-0 overflow-hidden transition-all justify-end duration-300 group-hover:max-h-full">
         <div className="px-4">
-          <span className="block text-white font-bold leading-3">Author</span>
+          <span className="block text-white font-bold leading-3">{t('cards.author')}</span>
           <strong className="text-white font-normal">{props.author}</strong>
         </div>
         <div className="px-4 pb-4">
-          <span className="block text-white font-bold leading-3">Published at</span>
+          <span className="block text-white font-bold leading-3">{t('cards.published')}</span>
           <strong className="text-white font-normal">{props.publishDate}</strong>
         </div>
       </div>

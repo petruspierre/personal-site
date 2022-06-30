@@ -9,6 +9,10 @@ body {
   -webkit-font-smoothing: antialised;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .swiper-item {
   @apply rounded-lg text-2xl font-bold text-white;
 
