@@ -59,10 +59,16 @@ export const BlogPost = () => {
 
   return (
     <div>
-      <Header links={[{
-        name: t('nav.back_blog', { ns: 'shared' }),
-        href: '/blog'
-      }]} />
+      <Header links={[
+        {
+          name: t('nav.back_blog', { ns: 'shared' }),
+          href: '/blog'
+        },
+        {
+          name: t('nav.home', { ns: 'shared' }),
+          href: '/'
+        }
+      ]} />
 
       <main className="w-full">
         <div className="max-w-5xl mx-auto px-4 pb-4">
