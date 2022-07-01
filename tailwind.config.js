@@ -10,7 +10,8 @@ module.exports = {
       colors: {
         blue: {
           500: '#006DD6',
-          900: '#003669'
+          900: '#003669',
+          darker: '#00274C'
         },
         gray: {
           900: '#1F1D2B'
