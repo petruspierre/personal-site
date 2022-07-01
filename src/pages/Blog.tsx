@@ -42,12 +42,15 @@ interface GetBlogPostsResponse {
 }
 
 export const Blog = () => {
-  const { t } = useTranslation(['blog'])
+  const { t } = useTranslation(['blog', 'shared'])
   const { data, loading } = useQuery<GetBlogPostsResponse>(GET_BLOG_POSTS)
 
   return (
     <div>
-      <Header />
+      <Header links={[{
+        name: t('nav.home', { ns: 'shared' }),
+        href: '/'
+      }]}/>
 
       <main className="w-full max-w-5xl px-4 lg:p-0 mx-auto">
         <div>

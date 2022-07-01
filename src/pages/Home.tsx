@@ -72,11 +72,20 @@ const companies = [
 ]
 
 export const Home = () => {
-  const { t } = useTranslation(['home']);
+  const { t } = useTranslation(['home', 'shared']);
 
   return (
     <div>
-      <Header showNav />
+      <Header links={[
+        {
+          name: t('nav.blog', { ns: 'shared' }),
+          href: '/blog'
+        },
+        {
+          name: t('nav.contact', { ns: 'shared' }),
+          href: '#contact'
+        }
+      ]} />
       <main className="w-full lg:p-0">
         <div className="mt-10 md:mt-15 w-full max-w-5xl mx-auto px-4 md:p-0 text-center md:text-left">
           <span className="text-white text-5xl font-serif">{t('greetings')}</span>

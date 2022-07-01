@@ -7,6 +7,7 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { useTranslation } from "react-i18next";
 
 const GET_BLOG_POST_BY_SLUG = gql`
   query GetBlogPostBySlug($slug: String) {
@@ -41,6 +42,7 @@ interface GetBlogPostResponse {
 }
 
 export const BlogPost = () => {
+  const { t } = useTranslation(['blog', 'shared']);
   const { slug } = useParams<{slug: string}>();
 
   const { data, loading } = useQuery<GetBlogPostResponse>(GET_BLOG_POST_BY_SLUG, {
@@ -57,11 +59,14 @@ export const BlogPost = () => {
 
   return (
     <div>
-      <Header />
+      <Header links={[{
+        name: t('nav.back_blog', { ns: 'shared' }),
+        href: '/blog'
+      }]} />
 
       <main className="w-full">
-        <div className="w-[90%] mx-auto p-4">
-          <h1 className="text-3xl text-white font-bold w-full text-center mb-2 underline">
+        <div className="max-w-5xl mx-auto px-4 pb-4">
+          <h1 className="text-2xl font-serif text-white font-bold w-full text-center mb-4 underline">
             {data.post.title}
           </h1>
           <div>
@@ -83,7 +88,9 @@ export const BlogPost = () => {
             ))}
           </div>
         </div>
-        <article className="bg-white drop-shadow-md border-blue-darker border-2 mb-4 dark:bg-gradient-to-tr from-blue-900 to-blue-darker w-[90%] mx-auto rounded-lg text-gray-900 dark:text-white p-4">
+        <article 
+          className="bg-white drop-shadow-md border-blue-darker border-2 mb-4 dark:bg-gradient-to-tr from-blue-900 to-blue-darker max-w-5xl w-full mx-auto rounded-lg text-gray-900 dark:text-white p-4"
+        >
           <ReactMarkdown 
             children={data.post.content ?? ''}
             remarkPlugins={[remarkGfm]}

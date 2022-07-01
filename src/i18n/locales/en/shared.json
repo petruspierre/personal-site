@@ -1,7 +1,9 @@
 { 
   "nav": {
     "blog": "blog",
-    "contact": "contact"
+    "contact": "contact",
+    "home": "home",
+    "back_blog": "back to blog"
   },
   "cards": {
     "author": "Author",
