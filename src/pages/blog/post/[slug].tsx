@@ -184,12 +184,10 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, query }) 
     }
   })
 
-  const localeSettings = locale ? { ...(await serverSideTranslations(locale, ['blog', 'common'])) } : {};
-
   return {
     props: {
       post: data.post,
-      ...localeSettings
+      ...(await serverSideTranslations(locale ?? '', ['blog', 'common', 'home']))
     },
   };
 }
