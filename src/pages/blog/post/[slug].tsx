@@ -184,8 +184,6 @@ export default function BlogPost ({ post }: BlogPostProps) {
             />,
           </article>
         </main>
-
-        <Footer />
       </div>
     </>
   )

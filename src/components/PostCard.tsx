@@ -17,7 +17,7 @@ export const PostCard = (props: PostCardProps) => {
   }
 
   return (
-    <Link href={props.link} passHref>
+    <Link href={props.link} passHref locale={props.locale}>
       <a 
         className="flex flex-1 flex-col max-w-full min-w-[250px] rounded-lg overflow-hidden h-[300px] bg-blue-900 bg-gradient-to-bl from-blue-500 to-blue-900 group transition-all hover:drop-shadow-lg"
       >
