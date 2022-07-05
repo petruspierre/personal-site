@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useTranslation } from "next-i18next";
 
 import { Header } from "../../../components/Header";
@@ -29,6 +29,14 @@ const GET_BLOG_POST_BY_SLUG = gql`
   }
 `
 
+const GET_ALL_POSTS_SLUG = gql`
+  query GetAllPostsSlug {
+    posts(orderBy: publishedAt_DESC) {
+      slug
+    }
+  }
+`;
+
 interface GetBlogPostResponse {
   post: {
     content: string;
@@ -42,6 +50,12 @@ interface GetBlogPostResponse {
       }
     }[]
   };
+}
+
+interface GetAllPostsResponse {
+  posts: {
+    slug: string;
+  }[];
 }
 
 interface BlogPostProps {
@@ -176,11 +190,25 @@ export default function BlogPost ({ post }: BlogPostProps) {
     </>
   )
 }
-export const getServerSideProps: GetServerSideProps = async ({ locale, query }) => {
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { data } = await client.query<GetAllPostsResponse>({
+    query: GET_ALL_POSTS_SLUG
+  })
+
+  const paths = data.posts.map(({ slug }) => ({ params: { slug } }))
+
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   const { data } = await client.query<GetBlogPostResponse>({
     query: GET_BLOG_POST_BY_SLUG,
     variables: {
-      slug: query.slug as string
+      slug: params?.slug as string
     }
   })
 
@@ -189,5 +217,6 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, query }) 
       post: data.post,
       ...(await serverSideTranslations(locale ?? '', ['blog', 'common', 'home']))
     },
+    revalidate: 60 * 60, // 1 hour
   };
 }
