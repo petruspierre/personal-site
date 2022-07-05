@@ -9,7 +9,7 @@ interface CardProps {
 }
 
 export const Card = (props: CardProps) => {
-  const { t } = useTranslation(['shared']);
+  const { t } = useTranslation(['common']);
 
   return (
     <a 
