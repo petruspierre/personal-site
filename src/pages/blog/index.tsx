@@ -7,6 +7,7 @@ import { PostCard } from "../../components/PostCard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { SEO } from "../../components/SEO";
 import { client } from "../../lib/apollo";
+import { GetStaticProps } from "next";
 
 const GET_BLOG_POSTS = gql`
   query GetBlogPosts {
@@ -90,13 +91,14 @@ export default function Blog({ posts }: BlogProps) {
   )
 }
 
-export async function getServerSideProps({ locale }: { locale: string }) {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const { data } = await client.query<GetBlogPostsResponse>({ query: GET_BLOG_POSTS })
 
   return {
     props: {
       posts: data.posts,
-      ...(await serverSideTranslations(locale, ['home', 'common', 'blog'])),
+      ...(await serverSideTranslations(locale ?? '', ['home', 'common', 'blog'])),
     },
+    revalidate: 60 * 30, // 30 minutes
   };
 }

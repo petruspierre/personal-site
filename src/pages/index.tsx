@@ -13,6 +13,7 @@ import "swiper/css/effect-cards";
 
 import { SEO } from '../components/SEO';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 
 const projects = [
   {
@@ -272,10 +273,11 @@ export default function Home() {
   )
 }
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['home', 'common'])),
+      ...(await serverSideTranslations(locale ?? '', ['home', 'common'])),
     },
+    revalidate: 60 * 30 // 30 minutes
   };
 }
