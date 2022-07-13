@@ -1,9 +1,10 @@
 import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface PostCardProps {
   title: string;
-  locale: 'pt' | 'en';
+  locale: string[];
   author: string;
   publishDate: string;
   link: string;
@@ -12,12 +13,20 @@ interface PostCardProps {
 
 export const PostCard = (props: PostCardProps) => {
   const locale = {
-    'en': 'English 🇺🇸',
-    'pt': 'Português 🇧🇷',
-  }
+    'en': 'us',
+    'pt': 'br',
+  } as Record<string, string>
+
+  const router = useRouter();
 
   return (
-    <Link href={props.link} passHref locale={props.locale}>
+    <Link 
+      href={props.link}
+      passHref
+      locale={
+        props.locale.includes(router.locale as string) ? router.locale : props.locale[0]
+      }
+    >
       <a 
         className="flex flex-1 flex-col max-w-full min-w-[250px] rounded-lg overflow-hidden h-[300px] bg-blue-900 bg-gradient-to-bl from-blue-500 to-blue-900 group transition-all hover:drop-shadow-lg"
       >
@@ -34,7 +43,11 @@ export const PostCard = (props: PostCardProps) => {
           </div>
 
           <div className="flex items-end justify-between">
-            <span className='line-clamp-1'>{locale[props.locale]}</span>
+            <div className='flex'>
+              {props.locale.map((flag) => (
+                <img key={flag} src={`/assets/flags/${locale[flag]}.svg`} className="w-6 h-6 mr-2" />
+              ))}
+            </div>
 
             <div className="flex flex-col items-end leading-tight">
               <strong>{props.author}</strong>

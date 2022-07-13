@@ -20,7 +20,10 @@ const GET_BLOG_POSTS = gql`
       coverImage {
         url
       }
-      authors(first: 1) {
+      localizations {
+        locale
+      }
+      authors {
         name
       }
     }
@@ -33,6 +36,9 @@ interface GetBlogPostsResponse {
     title: string;
     slug: string;
     locale: 'en' | 'pt';
+    localizations: {
+      locale: 'en' | 'pt';
+    }[];
     publishedAt?: string;
     coverImage: {
       url: string;
@@ -78,7 +84,10 @@ export default function Blog({ posts }: BlogProps) {
                   link={`/blog/post/${post.slug}`}
                   title={post.title}
                   publishDate={post.publishedAt ?? ''}
-                  locale={post.locale}
+                  locale={[
+                    post.locale,
+                    ...post.localizations.map(l => l.locale)
+                  ]}
                 />
               ))
             }

@@ -17,10 +17,10 @@ export const LanguageSelector = () => {
         defaultValue={locale}
       >
         <option value="en" className="text-xl">
-          ENG
+          English
         </option>
         <option value="pt">
-          POR
+          Português
         </option>
       </select>
     </div>

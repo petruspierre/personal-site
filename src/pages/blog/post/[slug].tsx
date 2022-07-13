@@ -13,15 +13,18 @@ import { client } from "../../../lib/apollo";
 import { SEO } from "../../../components/SEO";
 
 const GET_BLOG_POST_BY_SLUG = gql`
-  query GetBlogPostBySlug($slug: String) {
-    post(where: {slug: $slug}) {
+  query GetBlogPostBySlug($slug: String, $locales: [Locale!] = en) {
+    post(where: {slug: $slug}, locales: $locales) {
       content
       title
+      localizations {
+        locale
+      }
       authors(orderBy: name_ASC) {
         id
         name
         intro
-        picture {
+        picture(locales: en) {
           url
         }
       }
@@ -33,6 +36,10 @@ const GET_ALL_POSTS_SLUG = gql`
   query GetAllPostsSlug {
     posts(orderBy: publishedAt_DESC) {
       slug
+      locale
+      localizations {
+        locale
+      }
     }
   }
 `;
@@ -41,6 +48,9 @@ interface GetBlogPostResponse {
   post: {
     content: string;
     title: string;
+    localizations: {
+      locale: 'en' | 'pt';
+    }[];
     authors: {
       id: string;
       name: string;
@@ -55,6 +65,10 @@ interface GetBlogPostResponse {
 interface GetAllPostsResponse {
   posts: {
     slug: string;
+    localizations: {
+      locale: 'en' | 'pt';
+    }[];
+    locale: string;
   }[];
 }
 
@@ -89,7 +103,7 @@ export default function BlogPost ({ post }: BlogPostProps) {
             <h1 className="text-2xl font-serif text-white font-bold w-full text-center mb-4 underline">
               {post?.title}
             </h1>
-            <div>
+            <div className="flex flex-col md:flex-row gap-2 md:gap-6 flex-wrap">
               {post?.authors.map((author) => (
                 <div 
                   key={author.id}
@@ -116,7 +130,6 @@ export default function BlogPost ({ post }: BlogPostProps) {
               remarkPlugins={[remarkGfm]}
               components={{
                 code({node, inline, className, children, ...props}) {
-                  console.log(props)
                   const match = /language-(\w+)/.exec(className || '')
                   return !inline && match ? (
                     <SyntaxHighlighter
@@ -184,6 +197,10 @@ export default function BlogPost ({ post }: BlogPostProps) {
             />,
           </article>
         </main>
+
+        {post.localizations.length > 0 && (
+          <Footer />
+        )}
       </div>
     </>
   )
@@ -194,7 +211,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
     query: GET_ALL_POSTS_SLUG
   })
 
-  const paths = data.posts.map(({ slug }) => ({ params: { slug } }))
+  const paths = data.posts.reduce((acc, cur) => {
+    const { slug, localizations, locale } = cur;
+
+    const params = {
+      slug
+    }
+
+    localizations.forEach(localization => {
+      acc.push({
+        params,
+        locale: localization.locale
+      })
+    })
+
+    acc.push({
+      params,
+      locale
+    })
+
+    return acc;
+  }, [] as { params: { slug: string }, locale: string }[])
 
   return {
     paths,
@@ -206,7 +243,8 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   const { data } = await client.query<GetBlogPostResponse>({
     query: GET_BLOG_POST_BY_SLUG,
     variables: {
-      slug: params?.slug as string
+      slug: params?.slug as string,
+      locales: [locale as string]
     }
   })
 
