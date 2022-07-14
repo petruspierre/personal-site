@@ -36,8 +36,7 @@ const GET_ALL_POSTS_SLUG = gql`
   query GetAllPostsSlug {
     posts(orderBy: publishedAt_DESC) {
       slug
-      locale
-      localizations {
+      localizations(includeCurrent: true) {
         locale
       }
     }
@@ -68,7 +67,6 @@ interface GetAllPostsResponse {
     localizations: {
       locale: 'en' | 'pt';
     }[];
-    locale: string;
   }[];
 }
 
@@ -140,7 +138,7 @@ export default function BlogPost ({ post }: BlogPostProps) {
                       customStyle={{fontSize: '0.75rem'}}
                     />
                   ) : (
-                    <code className={className} {...props}>
+                    <code className="rounded border p-[2px] font-mono text-sm mx-1 bg-gray-300 text-blue-darker" {...props}>
                       {children}
                     </code>
                   )
@@ -160,6 +158,22 @@ export default function BlogPost ({ post }: BlogPostProps) {
                   >
                     {children}
                   </h2>
+                ),
+                h3: ({children, ...props}) => (
+                  <h3 
+                    className="text-xl font-bold mb-2"
+                    {...props}
+                  >
+                    {children}
+                  </h3>
+                ),
+                h4: ({children, ...props}) => (
+                  <h4 
+                    className="text-lg font-bold mb-2"
+                    {...props}
+                  >
+                    {children}
+                  </h4>
                 ),
                 img: (props) => (
                   <div className="w-full flex items-center justify-center mb-4">
@@ -212,22 +226,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   })
 
   const paths = data.posts.reduce((acc, cur) => {
-    const { slug, localizations, locale } = cur;
-
-    const params = {
-      slug
-    }
+    const { slug, localizations } = cur;
 
     localizations.forEach(localization => {
       acc.push({
-        params,
+        params: {
+          slug
+        },
         locale: localization.locale
       })
-    })
-
-    acc.push({
-      params,
-      locale
     })
 
     return acc;
@@ -235,7 +242,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false
+    fallback: 'blocking'
   }
 }
 

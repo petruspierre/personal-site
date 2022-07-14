@@ -10,17 +10,16 @@ import { client } from "../../lib/apollo";
 import { GetStaticProps } from "next";
 
 const GET_BLOG_POSTS = gql`
-  query GetBlogPosts {
-    posts {
+  query GetBlogPosts($locales: [Locale!] = [en]) {
+    posts(locales: $locales) {
       id
       title
-      locale
       publishedAt
       slug
-      coverImage {
+      coverImage(locales: en) {
         url
       }
-      localizations {
+      localizations(includeCurrent: true) {
         locale
       }
       authors {
@@ -35,7 +34,6 @@ interface GetBlogPostsResponse {
     id: string;
     title: string;
     slug: string;
-    locale: 'en' | 'pt';
     localizations: {
       locale: 'en' | 'pt';
     }[];
@@ -83,11 +81,8 @@ export default function Blog({ posts }: BlogProps) {
                   image={post.coverImage.url}
                   link={`/blog/post/${post.slug}`}
                   title={post.title}
-                  publishDate={post.publishedAt ?? ''}
-                  locale={[
-                    post.locale,
-                    ...post.localizations.map(l => l.locale)
-                  ]}
+                  publishDate={post.publishedAt ?? new Date().toISOString()}
+                  locale={post.localizations.map(l => l.locale)}
                 />
               ))
             }
@@ -101,7 +96,10 @@ export default function Blog({ posts }: BlogProps) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const { data } = await client.query<GetBlogPostsResponse>({ query: GET_BLOG_POSTS })
+  const { data } = await client.query<GetBlogPostsResponse>({ 
+    query: GET_BLOG_POSTS,
+    variables: { locales: [locale] }
+  })
 
   return {
     props: {

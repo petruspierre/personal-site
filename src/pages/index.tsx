@@ -82,7 +82,7 @@ export default function Home() {
     <>
       <SEO
         title="Petrus Pierre"
-        description="Desenvolvedor fullstack com foco em ReactJS, React Native e NodeJS."
+        description={t('common.intro', { ns: 'common' })}
       />
       <div>
         <Header links={[

@@ -1,6 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { ptBR, enUS } from 'date-fns/locale'
 
 interface PostCardProps {
   title: string;
@@ -18,6 +19,22 @@ export const PostCard = (props: PostCardProps) => {
   } as Record<string, string>
 
   const router = useRouter();
+
+  const formatDate = () => {
+    const date = parseISO(props.publishDate);
+    const dateLocale = {
+      'us': enUS,
+      'br': ptBR,
+    };
+    switch (router.locale) {
+      case 'en':
+        return format(date, 'MMMM dd, yyyy', { locale: dateLocale['us'] });
+      case 'pt':
+        return format(date, "dd' de 'MMMM' de 'yyyy", { locale: dateLocale['br'] });
+      default:
+        return format(date, 'MMMM dd, yyyy', { locale: dateLocale['us'] });
+    }
+  }
 
   return (
     <Link 
@@ -51,7 +68,7 @@ export const PostCard = (props: PostCardProps) => {
 
             <div className="flex flex-col items-end leading-tight">
               <strong>{props.author}</strong>
-              <time className='text-right'>{format(parseISO(props.publishDate), "d' de 'MMMM' de 'yyyy")}</time>
+              <time className='text-right'>{formatDate()}</time>
             </div>
           </div>
         </div>
