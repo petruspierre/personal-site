@@ -27,7 +27,7 @@ const GET_BLOG_POSTS = gql`
       }
     }
   }
-`
+`;
 
 interface GetBlogPostsResponse {
   posts: {
@@ -35,77 +35,83 @@ interface GetBlogPostsResponse {
     title: string;
     slug: string;
     localizations: {
-      locale: 'en' | 'pt';
+      locale: "en" | "pt";
     }[];
     publishedAt?: string;
     coverImage: {
       url: string;
-    },
+    };
     authors: {
       name: string;
-    }[]
-  }[]
+    }[];
+  }[];
 }
 
 interface BlogProps {
-  posts: GetBlogPostsResponse['posts'];
+  posts: GetBlogPostsResponse["posts"];
 }
 
 export default function Blog({ posts }: BlogProps) {
-  const { t } = useTranslation(['blog', 'common', 'home'])
+  const { t } = useTranslation(["blog", "common", "home"]);
 
   return (
     <>
       <SEO
         title="Petrus Pierre"
         siteTitle="Blog"
-        description={t('blog.description', { ns: 'home' })}
+        description={t("blog.description", { ns: "home" })}
       />
       <div>
-        <Header links={[{
-          name: t('nav.home', { ns: 'common' }),
-          href: '/'
-        }]}/>
+        <Header
+          links={[
+            {
+              name: t("nav.home", { ns: "common" }),
+              href: "/",
+            },
+          ]}
+        />
 
         <main className="w-full max-w-5xl px-4 lg:p-0 mx-auto">
           <div>
-            <h1 className="text-white text-3xl font-serif">{t('greetings')}</h1>
+            <h1 className="text-white text-3xl font-serif">{t("greetings")}</h1>
           </div>
 
           <section className="flex flex-wrap gap-4 mt-5">
-            {
-              posts.map(post => (
-                <PostCard 
-                  key={post.id}
-                  author={post.authors[0].name}
-                  image={post.coverImage.url}
-                  link={`/blog/post/${post.slug}`}
-                  title={post.title}
-                  publishDate={post.publishedAt ?? new Date().toISOString()}
-                  locale={post.localizations.map(l => l.locale)}
-                />
-              ))
-            }
+            {posts.map((post) => (
+              <PostCard
+                key={post.id}
+                author={post.authors[0].name}
+                image={post.coverImage.url}
+                link={`/blog/post/${post.slug}`}
+                title={post.title}
+                publishDate={post.publishedAt ?? new Date().toISOString()}
+                locale={post.localizations.map((l) => l.locale)}
+              />
+            ))}
           </section>
         </main>
 
         <Footer />
       </div>
     </>
-  )
+  );
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const { data } = await client.query<GetBlogPostsResponse>({ 
+  const { data } = await client.query<GetBlogPostsResponse>({
     query: GET_BLOG_POSTS,
-    variables: { locales: [locale] }
-  })
+    variables: { locales: [locale] },
+  });
 
   return {
     props: {
       posts: data.posts,
-      ...(await serverSideTranslations(locale ?? '', ['home', 'common', 'blog'])),
+      ...(await serverSideTranslations(locale ?? "", [
+        "home",
+        "common",
+        "blog",
+      ])),
     },
     revalidate: 60 * 30, // 30 minutes
   };
-}
+};

@@ -71,5 +71,5 @@ export const Logo = () => {
         </filter>
       </defs>
     </svg>
-  )
-}
+  );
+};

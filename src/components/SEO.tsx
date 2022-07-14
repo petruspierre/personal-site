@@ -1,10 +1,10 @@
-import Head from 'next/head'
+import Head from "next/head";
 
 interface SEOProps {
-  title: string
-  description: string
-  siteTitle?: string
-  image?: string
+  title: string;
+  description: string;
+  siteTitle?: string;
+  image?: string;
 }
 
 const SEO = ({ description, title, siteTitle, image }: SEOProps) => {
@@ -25,7 +25,7 @@ const SEO = ({ description, title, siteTitle, image }: SEOProps) => {
       <meta property="twitter:description" content={description} />
       {image ? <meta property="twitter:image" content={image} /> : null}
     </Head>
-  )
-}
+  );
+};
 
-export { SEO }
+export { SEO };
