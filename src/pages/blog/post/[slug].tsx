@@ -17,6 +17,7 @@ const GET_BLOG_POST_BY_SLUG = gql`
     post(where: { slug: $slug }, locales: $locales) {
       content
       title
+      intro
       localizations {
         locale
       }
@@ -47,6 +48,7 @@ interface GetBlogPostResponse {
   post: {
     content: string;
     title: string;
+    intro: string;
     localizations: {
       locale: "en" | "pt";
     }[];
@@ -151,6 +153,16 @@ export default function BlogPost({ post }: BlogPostProps) {
                     {children}
                   </pre>
                 ),
+                a: ({ children, ...props }) => (
+                  <a
+                    className="underline hover:opacity-90 transition-opacity"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    {...props}
+                  >
+                    {children}
+                  </a>
+                ),
                 h2: ({ children, ...props }) => (
                   <h2 className="text-2xl font-bold mb-4" {...props}>
                     {children}
@@ -183,7 +195,7 @@ export default function BlogPost({ post }: BlogPostProps) {
                 ),
                 blockquote: ({ children, ...props }) => (
                   <blockquote
-                    className="mb-4 p-4 italic border-l-4 bg-neutral-100 text-neutral-600 border-blue-900  dark:bg-blue-darker dark:text-white dark:border-white quote"
+                    className="mb-4 p-4 pb-2 italic border-l-4 bg-neutral-100 text-neutral-600 border-blue-900  dark:bg-blue-darker dark:text-white dark:border-white quote"
                     {...props}
                   >
                     {children}
@@ -193,7 +205,6 @@ export default function BlogPost({ post }: BlogPostProps) {
             >
               {post?.content ?? ""}
             </ReactMarkdown>
-            ,
           </article>
         </main>
 

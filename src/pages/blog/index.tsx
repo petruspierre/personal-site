@@ -98,9 +98,11 @@ export default function Blog({ posts }: BlogProps) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const availableLanguages = locale === "pt" ? ["pt", "en"] : ["en", "pt"];
+
   const { data } = await client.query<GetBlogPostsResponse>({
     query: GET_BLOG_POSTS,
-    variables: { locales: [locale] },
+    variables: { locales: availableLanguages },
   });
 
   return {
