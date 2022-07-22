@@ -10,7 +10,7 @@ import { useTranslation } from "next-i18next";
 import { Header } from "../../../components/Header";
 import { Footer } from "../../../components/Footer";
 import { client } from "../../../lib/apollo";
-import { ArticleJsonLd, DefaultSeo } from "next-seo";
+import { ArticleJsonLd, DefaultSeo, NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 
 const GET_BLOG_POST_BY_SLUG = gql`
@@ -91,12 +91,11 @@ export default function BlogPost({ post }: BlogPostProps) {
   const { t } = useTranslation(["blog", "common"]);
   const router = useRouter();
 
-  console.log(router.route);
-
   return (
     <>
+      <NextSeo title={`${post.title} - Blog`} />
       <ArticleJsonLd
-        url={router.route}
+        url={`https://petrus.dev.br${router.asPath}`}
         title={post.title}
         images={[post.coverImage.url]}
         datePublished={post.publishedAt ?? post.updatedAt}

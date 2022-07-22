@@ -9,7 +9,7 @@ import "../styles/global.css";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const { t } = useTranslation(["common"]);
-  const url = `https://petrus.dev.br${router.route}`;
+  const url = `https://petrus.dev.br${router.asPath}`;
 
   return (
     <ApolloProvider client={client}>

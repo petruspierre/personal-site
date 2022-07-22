@@ -62,6 +62,7 @@ export default function Blog({ posts }: BlogProps) {
           type: "website",
           title: "Blog",
         }}
+        title="Blog"
       />
       <div>
         <Header
