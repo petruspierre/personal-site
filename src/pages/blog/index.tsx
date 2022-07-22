@@ -5,9 +5,9 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { PostCard } from "../../components/PostCard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { SEO } from "../../components/SEO";
 import { client } from "../../lib/apollo";
 import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 
 const GET_BLOG_POSTS = gql`
   query GetBlogPosts($locales: [Locale!] = [en]) {
@@ -56,10 +56,12 @@ export default function Blog({ posts }: BlogProps) {
 
   return (
     <>
-      <SEO
-        title="Petrus Pierre"
-        siteTitle="Blog"
-        description={t("blog.description", { ns: "home" })}
+      <NextSeo
+        openGraph={{
+          description: t("blog.description", { ns: "home" }),
+          type: "website",
+          title: "Blog",
+        }}
       />
       <div>
         <Header

@@ -10,7 +10,8 @@ import { useTranslation } from "next-i18next";
 import { Header } from "../../../components/Header";
 import { Footer } from "../../../components/Footer";
 import { client } from "../../../lib/apollo";
-import { SEO } from "../../../components/SEO";
+import { ArticleJsonLd, DefaultSeo } from "next-seo";
+import { useRouter } from "next/router";
 
 const GET_BLOG_POST_BY_SLUG = gql`
   query GetBlogPostBySlug($slug: String, $locales: [Locale!] = en) {
@@ -21,6 +22,11 @@ const GET_BLOG_POST_BY_SLUG = gql`
       localizations {
         locale
       }
+      coverImage(locales: en) {
+        url
+      }
+      publishedAt
+      updatedAt
       authors(orderBy: name_ASC) {
         id
         name
@@ -49,9 +55,14 @@ interface GetBlogPostResponse {
     content: string;
     title: string;
     intro: string;
+    coverImage: {
+      url: string;
+    };
     localizations: {
       locale: "en" | "pt";
     }[];
+    publishedAt?: string;
+    updatedAt: string;
     authors: {
       id: string;
       name: string;
@@ -78,13 +89,25 @@ interface BlogPostProps {
 
 export default function BlogPost({ post }: BlogPostProps) {
   const { t } = useTranslation(["blog", "common"]);
+  const router = useRouter();
+
+  console.log(router.route);
 
   return (
     <>
-      <SEO
-        title="Blog"
-        siteTitle={post.title}
-        description={post.content.slice(0, 200)}
+      <ArticleJsonLd
+        url={router.route}
+        title={post.title}
+        images={[post.coverImage.url]}
+        datePublished={post.publishedAt ?? post.updatedAt}
+        dateModified={post.updatedAt}
+        authorName={[
+          post.authors.map((author) => ({
+            name: author.name,
+          })),
+        ]}
+        publisherName={post.authors[0].name}
+        description={post.intro}
       />
       <div>
         <Header

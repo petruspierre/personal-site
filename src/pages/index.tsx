@@ -18,7 +18,6 @@ import { Footer } from "../components/Footer";
 import "swiper/css";
 import "swiper/css/effect-cards";
 
-import { SEO } from "../components/SEO";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 
@@ -87,10 +86,6 @@ export default function Home() {
 
   return (
     <>
-      <SEO
-        title="Petrus Pierre"
-        description={t("common.intro", { ns: "common" })}
-      />
       <div>
         <Header
           links={[
