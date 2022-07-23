@@ -10,6 +10,7 @@ import {
 } from "phosphor-react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { ptBR, enUS } from "date-fns/locale";
 
 import { Card } from "../components/Card";
 import { Header } from "../components/Header";
@@ -20,72 +21,122 @@ import "swiper/css/effect-cards";
 
 import Link from "next/link";
 import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
+import { gql } from "@apollo/client";
+import { client } from "../lib/apollo";
+import { useRouter } from "next/router";
+import { format, parseISO } from "date-fns";
 
-const projects = [
-  {
-    name: "Gyntel",
-    link: "https://play.google.com/store/apps/details?id=com.gyntel",
-    image: "/assets/gyntel.png",
-    color: "bg-white",
-  },
-  {
-    name: "Letrinha",
-    link: "https://letrinha.xyz",
-    image: "/assets/letrinha.png",
-    color: "bg-[#59657D]",
-  },
-  {
-    name: "Seu chef",
-    link: "https://www.github.com/petruspierre/seuchef",
-    image: "/assets/seuchef.png",
-    color: "bg-[#DC143C]",
-  },
-  {
-    name: "Cidade de Goiás",
-    link: "https://play.google.com/store/apps/details?id=com.petruspierre.cidadedegoias",
-    image: "/assets/goias.png",
-    color: "bg-white",
-  },
-  {
-    name: "Checa Aqui",
-    link: "https://www.github.com/petruspierre/checaaqui",
-    image: "/assets/checa-aqui.png",
-    color: "bg-[#1F3E93]",
-  },
-];
+const GET_HOME_DATA = gql`
+  query GetHomeData {
+    companies {
+      name
+      id
+      image {
+        url
+      }
+    }
+    projects {
+      id
+      name
+      link
+      color
+      image {
+        url
+      }
+    }
+    highlights {
+      id
+      title
+      imageUrl
+      link
+      publishDate
+      author
+    }
+  }
+`;
 
-const companies = [
-  {
-    name: "Codeminer42",
-    image: "/assets/codeminer.png",
-  },
-  {
-    name: "SISCOM",
-    image: "/assets/siscom.png",
-  },
-  {
-    name: "BTG Pactual",
-    image: "/assets/btg.svg",
-  },
-  {
-    name: "Intellimize",
-    image: "/assets/intellimize.jpeg",
-  },
-  {
-    name: "Edlio",
-    image: "/assets/edlio.png",
-  },
-  {
-    name: "TAS",
-    image: "/assets/tas.png",
-  },
-];
+interface GetHomeDataResponse {
+  companies: {
+    name: string;
+    id: string;
+    image: {
+      url: string;
+    };
+  }[];
+  projects: {
+    id: string;
+    name: string;
+    link: string;
+    color: string;
+    image: {
+      url: string;
+    };
+  }[];
+  highlights: {
+    id: string;
+    title: string;
+    imageUrl: string;
+    link: string;
+    publishDate: string;
+    author: string;
+  }[];
+}
 
-export default function Home() {
+interface HomeProps {
+  companies: {
+    name: string;
+    id: string;
+    image: {
+      url: string;
+    };
+  }[];
+  projects: {
+    id: string;
+    name: string;
+    link: string;
+    color: string;
+    image: {
+      url: string;
+    };
+  }[];
+  highlights: {
+    id: string;
+    title: string;
+    imageUrl: string;
+    link: string;
+    publishDate: string;
+    author: string;
+  }[];
+}
+
+export default function Home({ companies, projects, highlights }: HomeProps) {
   const { t } = useTranslation(["home", "common"]);
+
+  const router = useRouter();
+
+  const formatDate = (dateString: string) => {
+    const date = parseISO(dateString);
+    const dateLocale = {
+      us: enUS,
+      br: ptBR,
+    };
+
+    switch (router.locale) {
+      case "en":
+        return format(date, "MMMM dd, yyyy", { locale: dateLocale["us"] });
+      case "pt":
+        return format(date, "dd' de 'MMMM' de 'yyyy", {
+          locale: dateLocale["br"],
+        });
+      default:
+        return format(date, "MMMM dd, yyyy", { locale: dateLocale["us"] });
+    }
+  };
 
   return (
     <>
+      <NextSeo title={t("home", { ns: "common" })} />
       <div>
         <Header
           links={[
@@ -117,27 +168,16 @@ export default function Home() {
             </p>
 
             <div className="flex flex-wrap mt-4 gap-8 flex-col md:flex-row">
-              <Card
-                title="IoT: What Can You Do with Your Stack?"
-                author="Petrus Pierre"
-                imageUrl="https://miro.medium.com/max/583/1*oGz2Y5UJfOLBTSfj262nnw.jpeg"
-                publishDate="Feb 8, 2021"
-                url="https://blog.codeminer42.com/iot-what-can-you-do-with-your-stack/"
-              />
-              <Card
-                title="React Query: Utilizando caching na hora de realizar requisições"
-                author="Petrus Pierre"
-                imageUrl="https://i.ytimg.com/vi/Mvy1ahOJ8TA/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB1r0YxWU4WSARZ9H62liM8CQ9HZw"
-                publishDate="Mar 17, 2022"
-                url="https://www.youtube.com/watch?v=Mvy1ahOJ8TA"
-              />
-              <Card
-                title="Primeiros passos com IoT: conhecendo o ESP"
-                author="Petrus Pierre"
-                imageUrl="https://i.ytimg.com/vi/-VV05kY_znA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDQ7JAVKaTNiqRvcHu_dBtDxDulIw"
-                publishDate="Jul 15, 2021"
-                url="https://www.youtube.com/watch?v=-VV05kY_znA"
-              />
+              {highlights.map((highlight) => (
+                <Card
+                  key={highlight.id}
+                  title={highlight.title}
+                  author={highlight.author}
+                  imageUrl={highlight.imageUrl}
+                  publishDate={formatDate(highlight.publishDate)}
+                  url={highlight.link}
+                />
+              ))}
             </div>
           </div>
 
@@ -170,7 +210,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src={project.image} alt={project.name} />
+                    <img src={project.image.url} alt={project.name} />
                   </a>
                 </SwiperSlide>
               ))}
@@ -189,8 +229,8 @@ export default function Home() {
               <div className="flex flex-wrap gap-8 p-4 items-center justify-around mt-5">
                 {companies.map((company) => (
                   <img
-                    key={company.name}
-                    src={company.image}
+                    key={company.id}
+                    src={company.image.url}
                     alt={company.name}
                     className="w-full md:w-auto md:min-w-[250px] max-h-10 object-contain"
                     draggable={false}
@@ -293,8 +333,18 @@ export default function Home() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const availableLanguages = locale === "pt" ? ["pt", "en"] : ["en", "pt"];
+
+  const { data } = await client.query<GetHomeDataResponse>({
+    query: GET_HOME_DATA,
+    variables: { locales: availableLanguages },
+  });
+
   return {
     props: {
+      companies: data.companies,
+      projects: data.projects,
+      highlights: data.highlights,
       ...(await serverSideTranslations(locale ?? "", ["home", "common"])),
     },
     revalidate: 60 * 30, // 30 minutes

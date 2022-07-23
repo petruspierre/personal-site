@@ -9,6 +9,7 @@
     "author": "Autor",
     "published": "Publicado em"
   },
+  "home": "Início",
   "language": "Idioma:",
   "intro": "Desenvolvedor fullstack com foco em React, React Native e Node.js."
 }
