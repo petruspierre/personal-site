@@ -105,6 +105,12 @@ export default function BlogPost({ post }: BlogPostProps) {
             authors: post.authors.map((author) => author.name),
           },
           url: `https://petrus.dev.br${router.asPath}`,
+          images: [
+            {
+              url: post.coverImage.url,
+              alt: post.title,
+            },
+          ],
         }}
       />
       <ArticleJsonLd

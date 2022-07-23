@@ -206,7 +206,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
                 >
                   <a
                     href={project.link}
-                    className="w-full h-full flex items-center justify-center"
+                    className="w-full h-full flex items-center justify-center p-4"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
