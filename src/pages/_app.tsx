@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           locale: router.locale,
           url,
           description: t("intro"),
-          site_name: "Petrus Piere | petrus.dev.br",
+          site_name: "Petrus Pierre | petrus.dev.br",
           images: [],
         }}
         twitter={{

@@ -8,6 +8,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { client } from "../../lib/apollo";
 import { GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 
 const GET_BLOG_POSTS = gql`
   query GetBlogPosts($locales: [Locale!] = [en]) {
@@ -54,6 +55,8 @@ interface BlogProps {
 export default function Blog({ posts }: BlogProps) {
   const { t } = useTranslation(["blog", "common", "home"]);
 
+  const router = useRouter();
+
   return (
     <>
       <NextSeo
@@ -61,8 +64,10 @@ export default function Blog({ posts }: BlogProps) {
           description: t("blog.description", { ns: "home" }),
           type: "website",
           title: "Blog",
+          locale: router.locale,
         }}
         title="Blog"
+        description={t("blog.description", { ns: "home" })}
       />
       <div>
         <Header

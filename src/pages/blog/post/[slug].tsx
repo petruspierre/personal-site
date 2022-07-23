@@ -93,18 +93,29 @@ export default function BlogPost({ post }: BlogPostProps) {
 
   return (
     <>
-      <NextSeo title={`${post.title} - Blog`} />
+      <NextSeo
+        title={`${post.title} - Blog`}
+        canonical={`https://petrus.dev.br${router.asPath}`}
+        openGraph={{
+          title: post.title,
+          description: post.intro,
+          locale: router.locale,
+          type: "article",
+          article: {
+            authors: post.authors.map((author) => author.name),
+          },
+          url: `https://petrus.dev.br${router.asPath}`,
+        }}
+      />
       <ArticleJsonLd
         url={`https://petrus.dev.br${router.asPath}`}
         title={post.title}
         images={[post.coverImage.url]}
         datePublished={post.publishedAt ?? post.updatedAt}
         dateModified={post.updatedAt}
-        authorName={[
-          post.authors.map((author) => ({
-            name: author.name,
-          })),
-        ]}
+        authorName={post.authors.map((author) => ({
+          name: author.name,
+        }))}
         publisherName={post.authors[0].name}
         description={post.intro}
       />
