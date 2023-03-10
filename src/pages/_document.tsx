@@ -66,7 +66,7 @@ export default class MyDocument extends Document {
                       t.src="https://www.clarity.ms/tag/"+i;
                       y=l.getElementsByTagName(r)[0];
                       y.parentNode.insertBefore(t,y);
-                  })(window, document, "clarity", "script", "XXXXXXXXX");`,
+                  })(window, document, "clarity", "script", "g6j1fk6ghl");`,
             }}
           />
           ;
