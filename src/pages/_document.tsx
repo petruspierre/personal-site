@@ -12,7 +12,6 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <meta charSet="utf-8" />
-
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
@@ -23,7 +22,6 @@ export default class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#003669" />
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="theme-color" content="#003669" />
-
           <link
             rel="icon"
             type="image/png"
@@ -55,10 +53,23 @@ export default class MyDocument extends Document {
             content="/assets/icon/ms-icon-144x144.png"
           />
           <meta name="theme-color" content="#003669" />
-
           <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-
           <meta name="twitter:url" content="https://petrus.dev.br/" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                  (function(c,l,a,r,i,t,y){
+                      c[a] = c[a] || function () { (c[a].q = c[a].q || 
+                      []).push(arguments) };
+                      t=l.createElement(r);
+                      t.async=1;
+                      t.src="https://www.clarity.ms/tag/"+i;
+                      y=l.getElementsByTagName(r)[0];
+                      y.parentNode.insertBefore(t,y);
+                  })(window, document, "clarity", "script", "XXXXXXXXX");`,
+            }}
+          />
+          ;
         </Head>
         <body>
           <Main />
