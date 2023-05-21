@@ -69,8 +69,8 @@ export default class MyDocument extends Document {
                   })(window, document, "clarity", "script", "g6j1fk6ghl");`,
             }}
           />
-          <script 
-            async 
+          <script
+            async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289095355624697"
           ></script>
         </Head>
