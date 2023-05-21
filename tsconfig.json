@@ -24,11 +24,7 @@
   "include": [
     "src"
 , "public/locales"  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ],
+  "references": [],
   "exclude": [
     "node_modules"
   ]
