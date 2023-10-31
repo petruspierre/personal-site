@@ -10,7 +10,7 @@ import { useTranslation } from "next-i18next";
 import { Header } from "../../../components/Header";
 import { Footer } from "../../../components/Footer";
 import { client } from "../../../lib/apollo";
-import { ArticleJsonLd, DefaultSeo, NextSeo } from "next-seo";
+import { ArticleJsonLd, NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 
 const GET_BLOG_POST_BY_SLUG = gql`

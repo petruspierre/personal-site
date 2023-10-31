@@ -31,12 +31,6 @@ export const Card = (props: CardProps) => {
       </div>
 
       <div className="flex flex-col flex-1 gap-2 max-h-0 overflow-hidden transition-all justify-end duration-300 group-hover:max-h-full">
-        <div className="px-4">
-          <span className="block text-white font-bold leading-3">
-            {t("cards.author")}
-          </span>
-          <strong className="text-white font-normal">{props.author}</strong>
-        </div>
         <div className="px-4 pb-4">
           <span className="block text-white font-bold leading-3">
             {t("cards.published")}
