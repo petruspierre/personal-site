@@ -150,7 +150,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
           ]}
         />
         <main className="w-full lg:p-0">
-          <div className="mt-10 md:mt-15 w-full max-w-5xl mx-auto px-4 md:p-0 text-center md:text-left">
+          <div className="mt-10 md:mt-15 w-full max-w-5xl mx-auto px-4 text-center md:text-left">
             <span className="text-white text-5xl font-serif">
               {t("greetings")}
             </span>
@@ -159,7 +159,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
             </h1>
           </div>
 
-          <div className="my-4 md:my-8 w-full max-w-5xl mx-auto px-4 md:p-0 text-center md:text-left">
+          <div className="my-4 md:my-8 w-full max-w-5xl mx-auto px-4 text-center md:text-left">
             <p className="text-white text-lg md:text-2xl">
               {t("headline.above")}
               <br />
@@ -239,10 +239,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
             </div>
           </div>
 
-          <div
-            id="visit-blog"
-            className="w-full max-w-5xl mx-auto px-4 md:px-0 py-8"
-          >
+          <div id="visit-blog" className="w-full max-w-5xl mx-auto px-4 py-8">
             <h2 className="text-white text-3xl font-serif">
               {t("blog.title")}
             </h2>
@@ -260,10 +257,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
             </Link>
           </div>
 
-          <div
-            id="contact"
-            className="w-full max-w-5xl mx-auto px-4 md:px-0 py-8"
-          >
+          <div id="contact" className="w-full max-w-5xl mx-auto px-4 py-8">
             <h2 className="text-white text-3xl font-serif">
               {t("contact.title")}
             </h2>

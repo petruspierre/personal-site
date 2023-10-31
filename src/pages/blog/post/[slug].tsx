@@ -139,7 +139,7 @@ export default function BlogPost({ post }: BlogPostProps) {
           ]}
         />
 
-        <main className="w-full">
+        <main className="w-full max-w-5xl flex-1 px-4 mx-auto">
           <div className="max-w-5xl mx-auto px-4 pb-4">
             <h1 className="text-2xl font-serif text-white font-bold w-full text-center mb-4 underline">
               {post?.title}

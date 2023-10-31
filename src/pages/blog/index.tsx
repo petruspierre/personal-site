@@ -69,7 +69,7 @@ export default function Blog({ posts }: BlogProps) {
         title="Blog"
         description={t("blog.description", { ns: "home" })}
       />
-      <div>
+      <div className="min-h-screen flex flex-col">
         <Header
           links={[
             {
@@ -79,7 +79,7 @@ export default function Blog({ posts }: BlogProps) {
           ]}
         />
 
-        <main className="w-full max-w-5xl px-4 lg:p-0 mx-auto">
+        <main className="w-full max-w-5xl flex-1 px-4 mx-auto">
           <div>
             <h1 className="text-white text-3xl font-serif">{t("greetings")}</h1>
           </div>

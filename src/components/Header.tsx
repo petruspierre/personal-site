@@ -10,13 +10,11 @@ interface HeaderProps {
 
 export const Header = (props: HeaderProps) => {
   return (
-    <header className="relative w-full flex items-center justify-center md:justify-start p-2 pt-8 pb-4 max-w-5xl mx-auto">
+    <header className="relative w-full flex items-center justify-center md:justify-start p-4 pt-8 pb-4 max-w-5xl mx-auto">
       <div className="text-white h-full flex items-center gap-10">
         <Link href="/" passHref>
-          <a className="w-[240px] md:w-full">
-            <div>
-              <Logo />
-            </div>
+          <a className="hover:cursor-pointer text-2xl bg-clip-text transition-all bg-white font-bold text-transparent hover:bg-gradient-to-tr from-blue-200 to-blue-400">
+            Petrus Pierre
           </a>
         </Link>
 
