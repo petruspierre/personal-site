@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           images: [],
         }}
         twitter={{
-          handle: "@petruscrf",
+          handle: "@pierretsx",
           site: "https://petrus.dev.br/",
           cardType: "summary",
         }}

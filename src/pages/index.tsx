@@ -4,7 +4,6 @@ import {
   DiscordLogo,
   Envelope,
   GithubLogo,
-  InstagramLogo,
   LinkedinLogo,
   PaperPlaneTilt,
 } from "phosphor-react";
@@ -280,7 +279,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
                 <div>
                   <DiscordLogo size={18} />
                 </div>
-                <span>petrus#0001</span>
+                <span>petrus.tsx</span>
               </a>
 
               <a
@@ -311,16 +310,6 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
                   <LinkedinLogo size={18} />
                 </div>
                 <span>Petrus Pierre</span>
-              </a>
-
-              <a
-                href="https://instagram.com/petrus.pierre"
-                className="min-w-[200]px px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-full sm:w-auto hover:bg-blue-500 transition-colors"
-              >
-                <div>
-                  <InstagramLogo size={18} />
-                </div>
-                <span>petrus.pierre</span>
               </a>
             </div>
           </div>
