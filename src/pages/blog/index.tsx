@@ -12,9 +12,10 @@ import { useRouter } from "next/router";
 
 const GET_BLOG_POSTS = gql`
   query GetBlogPosts($locales: [Locale!] = [en]) {
-    posts(locales: $locales, orderBy: createdAt_DESC) {
+    posts(locales: $locales, orderBy: publishedAt_DESC) {
       id
       title
+      publishedAt
       createdAt
       slug
       coverImage(locales: en) {
@@ -39,6 +40,7 @@ interface GetBlogPostsResponse {
       locale: "en" | "pt";
     }[];
     publishedAt?: string;
+    createdAt?: string;
     coverImage: {
       url: string;
     };
