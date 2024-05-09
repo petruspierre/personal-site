@@ -12,10 +12,10 @@ import { useRouter } from "next/router";
 
 const GET_BLOG_POSTS = gql`
   query GetBlogPosts($locales: [Locale!] = [en]) {
-    posts(locales: $locales) {
+    posts(locales: $locales, orderBy: createdAt_DESC) {
       id
       title
-      publishedAt
+      createdAt
       slug
       coverImage(locales: en) {
         url
@@ -89,7 +89,7 @@ export default function Blog({ posts }: BlogProps) {
               <PostCard
                 key={post.id}
                 author={post.authors[0].name}
-                image={post.coverImage.url}
+                image={post.coverImage?.url}
                 link={`/blog/post/${post.slug}`}
                 title={post.title}
                 publishDate={post.publishedAt ?? new Date().toISOString()}
