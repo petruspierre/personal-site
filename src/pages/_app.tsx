@@ -20,12 +20,12 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           locale: router.locale,
           url,
           description: t("intro"),
-          site_name: "Petrus Pierre | petrus.dev.br",
+          site_name: "Petrus Pierre",
           images: [],
         }}
         twitter={{
           handle: "@pierretsx",
-          site: "https://petrus.dev.br/",
+          site: "@pierretsx",
           cardType: "summary",
         }}
         robotsProps={{

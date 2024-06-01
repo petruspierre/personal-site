@@ -1,6 +1,9 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default class MyDocument extends Document {
+  clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
+
   render() {
     return (
       <Html>
@@ -56,24 +59,21 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
           <meta name="twitter:url" content="https://petrus.dev.br/" />
 
-          {/* <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                  (function(c,l,a,r,i,t,y){
-                      c[a] = c[a] || function () { (c[a].q = c[a].q || 
-                      []).push(arguments) };
-                      t=l.createElement(r);
-                      t.async=1;
-                      t.src="https://www.clarity.ms/tag/"+i;
-                      y=l.getElementsByTagName(r)[0];
-                      y.parentNode.insertBefore(t,y);
-                  })(window, document, "clarity", "script", "g6j1fk6ghl");`,
-            }}
-          />
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289095355624697"
-          ></script> */}
+          {this.clarityProjectId && (
+            <Script id="clarity-script" strategy="afterInteractive">
+              {`
+              (function(c,l,a,r,i,t,y){
+                  c[a] = c[a] || function () { (c[a].q = c[a].q || 
+                  []).push(arguments) };
+                  t=l.createElement(r);
+                  t.async=1;
+                  t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];
+                  y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "${this.clarityProjectId}");
+            `}
+            </Script>
+          )}
         </Head>
         <body>
           <Main />
