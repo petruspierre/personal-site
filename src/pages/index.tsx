@@ -247,13 +247,14 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
               {t("blog.description")}
             </h3>
 
-            <Link href="/blog" passHref>
-              <a className="px-4 py-2 bg-blue-900 text-white font-bold rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors">
-                <span>{t("blog.cta")}</span>
-                <div>
-                  <PaperPlaneTilt size={18} weight="bold" />
-                </div>
-              </a>
+            <Link
+              href="/blog"
+              className="px-4 py-2 bg-blue-900 text-white font-bold rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors"
+            >
+              <span>{t("blog.cta")}</span>
+              <div>
+                <PaperPlaneTilt size={18} weight="bold" />
+              </div>
             </Link>
           </div>
 

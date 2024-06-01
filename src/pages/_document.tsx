@@ -55,7 +55,8 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#003669" />
           <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
           <meta name="twitter:url" content="https://petrus.dev.br/" />
-          <script
+
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `
                   (function(c,l,a,r,i,t,y){
@@ -72,7 +73,7 @@ export default class MyDocument extends Document {
           <script
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289095355624697"
-          ></script>
+          ></script> */}
         </Head>
         <body>
           <Main />
