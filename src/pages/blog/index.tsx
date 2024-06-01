@@ -81,12 +81,12 @@ export default function Blog({ posts }: BlogProps) {
           ]}
         />
 
-        <main className="mx-auto w-full max-w-5xl flex-1 px-4 lg:px-0">
-          <div>
+        <main className="w-full flex-1 lg:p-0">
+          <div className="md:mt-15 mx-auto mt-10 w-full max-w-5xl px-4 text-center md:text-left">
             <h1 className="font-serif text-3xl text-white">{t("greetings")}</h1>
           </div>
 
-          <section className="mt-5 flex flex-wrap gap-4">
+          <section className="mx-auto mt-5 flex max-w-5xl flex-wrap gap-4 px-4">
             {posts.map((post) => (
               <PostCard
                 key={post.id}

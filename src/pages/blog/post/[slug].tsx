@@ -125,7 +125,7 @@ export default function BlogPost({ post }: BlogPostProps) {
         publisherName={post.authors[0].name}
         description={post.intro}
       />
-      <div>
+      <div className="flex min-h-screen w-full flex-col">
         <Header
           links={[
             {

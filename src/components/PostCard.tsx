@@ -47,19 +47,19 @@ export const PostCard = (props: PostCardProps) => {
           ? router.locale
           : props.locale[0]
       }
-      className="flex flex-1 flex-col max-w-full min-w-[250px] rounded-lg overflow-hidden h-[300px] bg-blue-900 bg-gradient-to-bl from-blue-500 to-blue-900 group transition-all hover:drop-shadow-lg"
+      className="group flex h-[300px] min-w-[250px] max-w-full flex-1 flex-col overflow-hidden rounded-lg bg-blue-900 bg-gradient-to-bl from-blue-500 to-blue-900 transition-all hover:drop-shadow-lg"
     >
-      <div className="h-[200px] max-h-[200px] group-hover:max-h-[180px] transition-all">
+      <div className="h-[200px] max-h-[200px] transition-all group-hover:max-h-[180px]">
         <img
-          className="rounded-lg h-full w-full object-cover"
+          className="h-full w-full rounded-lg object-cover"
           src={props.image}
           alt={`Cover image for ${props.title}`}
         />
       </div>
 
-      <div className="px-4 py-2 text-white flex-1 flex flex-col justify-center">
+      <div className="flex flex-1 flex-col justify-center px-4 py-2 text-white">
         <div className="flex-1">
-          <h3 className="text-lg font-bold group-hover:underline text line-clamp-1 group-hover:line-clamp-2">
+          <h3 className="text text-lg font-bold line-clamp-1 group-hover:underline group-hover:line-clamp-2">
             {props.title}
           </h3>
         </div>
@@ -70,7 +70,7 @@ export const PostCard = (props: PostCardProps) => {
               <img
                 key={flag}
                 src={`/assets/flags/${locale[flag]}.svg`}
-                className="w-6 h-6 mr-2"
+                className="mr-2 h-6 w-6"
                 alt={flag}
               />
             ))}
