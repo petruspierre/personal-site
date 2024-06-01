@@ -9,11 +9,11 @@ interface HeaderProps {
 
 export const Header = (props: HeaderProps) => {
   return (
-    <header className="relative w-full flex items-center justify-center md:justify-start p-4 pt-8 pb-4 max-w-5xl mx-auto">
-      <div className="text-white h-full flex items-center gap-10">
+    <header className="relative mx-auto flex w-full max-w-5xl items-center justify-center p-4 pt-8 pb-4 md:justify-start">
+      <div className="flex h-full items-center gap-10 text-white">
         <Link
           href="/"
-          className="hover:cursor-pointer text-2xl bg-clip-text transition-all bg-white font-bold text-transparent hover:bg-gradient-to-tr from-blue-200 to-blue-400"
+          className="bg-white from-blue-200 to-blue-400 bg-clip-text text-2xl font-bold text-transparent transition-all hover:cursor-pointer hover:bg-gradient-to-tr"
         >
           Petrus Pierre
         </Link>
@@ -23,7 +23,7 @@ export const Header = (props: HeaderProps) => {
             <Link
               key={link.href + link.name}
               href={link.href}
-              className="hidden md:block font-serif text-lg hover:underline whitespace-nowrap"
+              className="hidden whitespace-nowrap font-serif text-lg hover:underline md:block"
             >
               {link.name}
             </Link>
