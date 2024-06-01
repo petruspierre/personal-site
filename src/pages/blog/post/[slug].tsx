@@ -139,21 +139,21 @@ export default function BlogPost({ post }: BlogPostProps) {
           ]}
         />
 
-        <main className="w-full max-w-5xl flex-1 px-4 mx-auto">
-          <div className="max-w-5xl mx-auto px-4 pb-4">
-            <h1 className="text-2xl font-serif text-white font-bold w-full text-center mb-4 underline">
+        <main className="mx-auto w-full max-w-5xl flex-1 px-4">
+          <div className="mx-auto max-w-5xl px-4 pb-4">
+            <h1 className="mb-4 w-full text-center font-serif text-2xl font-bold text-white underline">
               {post?.title}
             </h1>
-            <div className="flex flex-col md:flex-row gap-2 md:gap-6 flex-wrap">
+            <div className="flex flex-col flex-wrap gap-2 md:flex-row md:gap-6">
               {post?.authors.map((author) => (
                 <div
                   key={author.id}
-                  className="text-white flex gap-2 items-center max-w-sm border-l-2 border-white -ml-3 pl-4"
+                  className="-ml-3 flex max-w-sm items-center gap-2 border-l-2 border-white pl-4 text-white"
                 >
                   <img
                     src={author.picture.url}
                     alt={author.name}
-                    className="rounded-full mr-2 w-10 h-10"
+                    className="mr-2 h-10 w-10 rounded-full"
                   />
                   <div>
                     <strong>{author.name}</strong>
@@ -163,7 +163,7 @@ export default function BlogPost({ post }: BlogPostProps) {
               ))}
             </div>
           </div>
-          <article className="bg-white drop-shadow-md border-blue-darker border-2 mb-4 dark:bg-gradient-to-tr from-blue-900 to-blue-darker max-w-5xl w-full mx-auto rounded-lg text-gray-900 dark:text-white p-4">
+          <article className="mx-auto mb-4 w-full max-w-5xl rounded-lg border-2 border-blue-darker bg-white from-blue-900 to-blue-darker p-4 text-gray-900 drop-shadow-md dark:bg-gradient-to-tr dark:text-white">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
@@ -180,7 +180,7 @@ export default function BlogPost({ post }: BlogPostProps) {
                     </SyntaxHighlighter>
                   ) : (
                     <code
-                      className="rounded border p-[2px] font-mono text-sm mx-1 bg-gray-300 text-blue-darker"
+                      className="mx-1 rounded border bg-gray-300 p-[2px] font-mono text-sm text-blue-darker"
                       {...props}
                     >
                       {children}
@@ -194,7 +194,7 @@ export default function BlogPost({ post }: BlogPostProps) {
                 ),
                 a: ({ children, ...props }) => (
                   <a
-                    className="underline hover:opacity-90 transition-opacity"
+                    className="underline transition-opacity hover:opacity-90"
                     rel="noopener noreferrer"
                     target="_blank"
                     {...props}
@@ -203,22 +203,22 @@ export default function BlogPost({ post }: BlogPostProps) {
                   </a>
                 ),
                 h2: ({ children, ...props }) => (
-                  <h2 className="text-2xl font-bold mb-4" {...props}>
+                  <h2 className="mb-4 text-2xl font-bold" {...props}>
                     {children}
                   </h2>
                 ),
                 h3: ({ children, ...props }) => (
-                  <h3 className="text-xl font-bold mb-2" {...props}>
+                  <h3 className="mb-2 text-xl font-bold" {...props}>
                     {children}
                   </h3>
                 ),
                 h4: ({ children, ...props }) => (
-                  <h4 className="text-lg font-bold mb-2" {...props}>
+                  <h4 className="mb-2 text-lg font-bold" {...props}>
                     {children}
                   </h4>
                 ),
                 img: (props) => (
-                  <div className="w-full flex items-center justify-center mb-4">
+                  <div className="mb-4 flex w-full items-center justify-center">
                     <img className="object-contain" {...props} />
                   </div>
                 ),
@@ -228,13 +228,13 @@ export default function BlogPost({ post }: BlogPostProps) {
                   </p>
                 ),
                 ul: ({ children, ...props }) => (
-                  <ul className="mb-2 list-disc ml-8 leading-snug" {...props}>
+                  <ul className="mb-2 ml-8 list-disc leading-snug" {...props}>
                     {children}
                   </ul>
                 ),
                 blockquote: ({ children, ...props }) => (
                   <blockquote
-                    className="mb-4 p-4 pb-2 italic border-l-4 bg-neutral-100 text-neutral-600 border-blue-900  dark:bg-blue-darker dark:text-white dark:border-white quote"
+                    className="quote mb-4 border-l-4 border-blue-900 bg-neutral-100 p-4 pb-2 italic text-neutral-600 dark:border-white dark:bg-blue-darker dark:text-white"
                     {...props}
                   >
                     {children}
@@ -258,20 +258,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
     query: GET_ALL_POSTS_SLUG,
   });
 
-  const paths = data.posts.reduce((acc, cur) => {
-    const { slug, localizations } = cur;
+  const paths = data.posts.reduce(
+    (acc, cur) => {
+      const { slug, localizations } = cur;
 
-    localizations.forEach((localization) => {
-      acc.push({
-        params: {
-          slug,
-        },
-        locale: localization.locale,
+      localizations.forEach((localization) => {
+        acc.push({
+          params: {
+            slug,
+          },
+          locale: localization.locale,
+        });
       });
-    });
 
-    return acc;
-  }, [] as { params: { slug: string }; locale: string }[]);
+      return acc;
+    },
+    [] as { params: { slug: string }; locale: string }[],
+  );
 
   return {
     paths,

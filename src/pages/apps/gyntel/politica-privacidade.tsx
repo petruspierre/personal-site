@@ -1,6 +1,6 @@
 export default function PoliticaGyntel() {
   return (
-    <main className="w-full max-w-5xl flex-1 px-4 mx-auto py-4 text-white space-y-2 text-justify text-lg">
+    <main className="mx-auto w-full max-w-5xl flex-1 space-y-2 px-4 py-4 text-justify text-lg text-white">
       <h1 className="text-xl font-bold">Política Privacidade</h1>
       <p>
         A sua privacidade é importante para nós. É política da noc.ton respeitar
@@ -47,7 +47,7 @@ export default function PoliticaGyntel() {
         pessoais, entre em contato conosco.
       </p>
 
-      <h2 className="font-bold pt-4">Mais informações</h2>
+      <h2 className="pt-4 font-bold">Mais informações</h2>
 
       <p>
         Esperemos que esteja esclarecido e, como mencionado anteriormente, se

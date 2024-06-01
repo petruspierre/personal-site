@@ -136,7 +136,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
   return (
     <>
       <NextSeo title={t("home", { ns: "common" })} />
-      <div>
+      <div className="flex min-h-screen w-full flex-col">
         <Header
           links={[
             {
@@ -150,23 +150,23 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
           ]}
         />
         <main className="w-full lg:p-0">
-          <div className="mt-10 md:mt-15 w-full max-w-5xl mx-auto px-4 text-center md:text-left">
-            <span className="text-white text-5xl font-serif">
+          <div className="md:mt-15 mx-auto mt-10 w-full max-w-5xl px-4 text-center md:text-left">
+            <span className="font-serif text-5xl text-white">
               {t("greetings")}
             </span>
-            <h1 className="text-white font-serif text-3xl mt-8">
+            <h1 className="mt-8 font-serif text-3xl text-white">
               {t("welcome")}
             </h1>
           </div>
 
-          <div className="my-4 md:my-8 w-full max-w-5xl mx-auto px-4 text-center md:text-left">
-            <p className="text-white text-lg md:text-2xl">
+          <div className="my-4 mx-auto w-full max-w-5xl px-4 text-center md:my-8 md:text-left">
+            <p className="text-lg text-white md:text-2xl">
               {t("headline.above")}
               <br />
               {t("headline.below")}
             </p>
 
-            <div className="flex flex-wrap mt-4 gap-8 flex-col md:flex-row">
+            <div className="mt-4 flex flex-col flex-wrap gap-8 md:flex-row">
               {highlights.map((highlight) => (
                 <Card
                   key={highlight.id}
@@ -180,11 +180,11 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
             </div>
           </div>
 
-          <div className="flex flex-col w-full p-4 py-8 relative items-center justify-center bg-gradient-to-r from-blue-500 to-blue-900">
-            <h2 className="text-white text-3xl font-serif">
+          <div className="relative flex w-full flex-col items-center justify-center bg-gradient-to-r from-blue-500 to-blue-900 p-4 py-8">
+            <h2 className="font-serif text-3xl text-white">
               {t("projects.title")}
             </h2>
-            <h3 className="text-white text-lg max-w-3xl text-center mt-2">
+            <h3 className="mt-2 max-w-3xl text-center text-lg text-white">
               {t("projects.description")}
             </h3>
 
@@ -192,7 +192,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
               effect={"cards"}
               grabCursor={true}
               modules={[EffectCards, Autoplay]}
-              className="w-[240px] h-[240px] mt-5"
+              className="mt-5 h-[240px] w-[240px]"
               autoplay={{
                 delay: 1500,
                 disableOnInteraction: true,
@@ -205,7 +205,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
                 >
                   <a
                     href={project.link}
-                    className="w-full h-full flex items-center justify-center p-4"
+                    className="flex h-full w-full items-center justify-center p-4"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -216,22 +216,22 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
             </Swiper>
           </div>
 
-          <div className="flex flex-col w-full p-4 py-8 bg-white">
-            <div className="flex-1 max-w-5xl mx-auto items-center justify-center">
-              <h2 className="text-gray-900 text-3xl font-serif text-center">
+          <div className="flex w-full flex-col bg-white p-4 py-8">
+            <div className="mx-auto max-w-5xl flex-1 items-center justify-center">
+              <h2 className="text-center font-serif text-3xl text-gray-900">
                 {t("companies.title")}
               </h2>
-              <h3 className="text-gray-900 text-lg max-w-3xl text-center mx-auto mt-2">
+              <h3 className="mx-auto mt-2 max-w-3xl text-center text-lg text-gray-900">
                 {t("companies.description")}
               </h3>
 
-              <div className="flex flex-wrap gap-8 p-4 items-center justify-around mt-5">
+              <div className="mt-5 flex flex-wrap items-center justify-around gap-8 p-4">
                 {companies.map((company) => (
                   <img
                     key={company.id}
                     src={company.image.url}
                     alt={company.name}
-                    className="w-full md:w-auto md:min-w-[250px] max-h-10 object-contain"
+                    className="max-h-10 w-full object-contain md:w-auto md:min-w-[250px]"
                     draggable={false}
                   />
                 ))}
@@ -239,17 +239,17 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
             </div>
           </div>
 
-          <div id="visit-blog" className="w-full max-w-5xl mx-auto px-4 py-8">
-            <h2 className="text-white text-3xl font-serif">
+          <div id="visit-blog" className="mx-auto w-full max-w-5xl px-4 py-8">
+            <h2 className="font-serif text-3xl text-white">
               {t("blog.title")}
             </h2>
-            <h3 className="text-white font-sans text-2xl mt-5 mb-4">
+            <h3 className="mt-5 mb-4 font-sans text-2xl text-white">
               {t("blog.description")}
             </h3>
 
             <Link
               href="/blog"
-              className="px-4 py-2 bg-blue-900 text-white font-bold rounded-lg flex items-center gap-2 w-fit hover:bg-blue-500 transition-colors"
+              className="flex w-fit items-center gap-2 rounded-lg bg-blue-900 px-4 py-2 font-bold text-white transition-colors hover:bg-blue-500"
             >
               <span>{t("blog.cta")}</span>
               <div>
@@ -258,18 +258,18 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
             </Link>
           </div>
 
-          <div id="contact" className="w-full max-w-5xl mx-auto px-4 py-8">
-            <h2 className="text-white text-3xl font-serif">
+          <div id="contact" className="mx-auto w-full max-w-5xl px-4 py-8">
+            <h2 className="font-serif text-3xl text-white">
               {t("contact.title")}
             </h2>
-            <h3 className="text-white font-sans text-2xl mt-5 mb-4">
+            <h3 className="mt-5 mb-4 font-sans text-2xl text-white">
               {t("contact.description")}
             </h3>
 
-            <div className="flex flex-col flex-wrap sm:flex-row gap-4">
+            <div className="flex flex-col flex-wrap gap-4 sm:flex-row">
               <a
                 href="https://discord.com/"
-                className="min-w-[200]px px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-full sm:w-auto hover:bg-blue-500 transition-colors"
+                className="min-w-[200]px flex w-full items-center gap-2 rounded-lg bg-blue-900 px-4 py-2 text-white transition-colors hover:bg-blue-500 sm:w-auto"
               >
                 <div>
                   <DiscordLogo size={18} />
@@ -279,7 +279,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
 
               <a
                 href="mailto:contato@petrus.dev.br?subject=Contact"
-                className="min-w-[200]px px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-full sm:w-auto hover:bg-blue-500 transition-colors"
+                className="min-w-[200]px flex w-full items-center gap-2 rounded-lg bg-blue-900 px-4 py-2 text-white transition-colors hover:bg-blue-500 sm:w-auto"
               >
                 <div>
                   <Envelope size={18} />
@@ -289,7 +289,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
 
               <a
                 href="https://github.com/petruspierre"
-                className="min-w-[200]px px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-full sm:w-auto hover:bg-blue-500 transition-colors"
+                className="min-w-[200]px flex w-full items-center gap-2 rounded-lg bg-blue-900 px-4 py-2 text-white transition-colors hover:bg-blue-500 sm:w-auto"
               >
                 <div>
                   <GithubLogo size={18} />
@@ -299,7 +299,7 @@ export default function Home({ companies, projects, highlights }: HomeProps) {
 
               <a
                 href="https://www.linkedin.com/in/petrus-pierre/"
-                className="min-w-[200]px px-4 py-2 bg-blue-900 text-white rounded-lg flex items-center gap-2 w-full sm:w-auto hover:bg-blue-500 transition-colors"
+                className="min-w-[200]px flex w-full items-center gap-2 rounded-lg bg-blue-900 px-4 py-2 text-white transition-colors hover:bg-blue-500 sm:w-auto"
               >
                 <div>
                   <LinkedinLogo size={18} />

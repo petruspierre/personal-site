@@ -71,7 +71,7 @@ export default function Blog({ posts }: BlogProps) {
         title="Blog"
         description={t("blog.description", { ns: "home" })}
       />
-      <div className="min-h-screen flex flex-col">
+      <div className="flex min-h-screen w-full flex-col">
         <Header
           links={[
             {
@@ -81,12 +81,12 @@ export default function Blog({ posts }: BlogProps) {
           ]}
         />
 
-        <main className="w-full max-w-5xl flex-1 px-4 mx-auto">
+        <main className="mx-auto w-full max-w-5xl flex-1 px-4 lg:px-0">
           <div>
-            <h1 className="text-white text-3xl font-serif">{t("greetings")}</h1>
+            <h1 className="font-serif text-3xl text-white">{t("greetings")}</h1>
           </div>
 
-          <section className="flex flex-wrap gap-4 mt-5">
+          <section className="mt-5 flex flex-wrap gap-4">
             {posts.map((post) => (
               <PostCard
                 key={post.id}
