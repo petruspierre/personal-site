@@ -1,13 +1,13 @@
 {
   "greetings": "Hi!",
   "welcome": "Welcome to my place on Internet!",
-  "headline": { 
+  "headline": {
     "above": "Here you can find my contact information, articles, videos, and projects.",
     "below": "I've broken down some highlights for you below."
   },
   "projects": {
     "title": "Projects",
-    "description": "You can now look at some of my projects. You can check them out and contribute on your own because most of them are open source and personal projects!"
+    "description": "You can now look at some of my projects. You can check them out and contribute on your own because some of them are open source and personal projects!"
   },
   "companies": {
     "title": "Companies",

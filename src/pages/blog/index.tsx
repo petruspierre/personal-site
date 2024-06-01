@@ -86,7 +86,7 @@ export default function Blog({ posts }: BlogProps) {
             <h1 className="font-serif text-3xl text-white">{t("greetings")}</h1>
           </div>
 
-          <section className="mx-auto mt-5 flex max-w-5xl flex-wrap gap-4 px-4">
+          <section className="mx-auto my-5 flex max-w-5xl flex-wrap gap-4 px-4">
             {posts.map((post) => (
               <PostCard
                 key={post.id}

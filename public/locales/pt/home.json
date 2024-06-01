@@ -1,13 +1,13 @@
 {
   "greetings": "Olá!",
   "welcome": "Bem vindo ao meu pedaço da internet!",
-  "headline": { 
+  "headline": {
     "above": "Aqui você vai encontrar meus projetos pessoais, artigos, vídeos e informações de contato.",
     "below": "Separei para você alguns destaques aqui embaixo:"
   },
   "projects": {
     "title": "Projetos",
-    "description": "Aqui estão alguns projetos que construí. Você pode acessar alguns que estão disponíveis online e contribuir também, pois a maioria são projetos open-source!"
+    "description": "Aqui estão alguns projetos que construí. Você pode acessar alguns que estão disponíveis online e contribuir também, pois alguns são projetos open-source!"
   },
   "companies": {
     "title": "Empresas",
