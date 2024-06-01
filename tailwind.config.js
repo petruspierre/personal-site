@@ -8,7 +8,7 @@ module.exports = {
     },
   },
   content: ["./src/**/*.tsx"],
-  safelist: ["bg-[#59657D]", "bg-[#DC143C]", "bg-[#1F3E93]"],
+  safelist: ["bg-[#59657D]", "bg-[#DC143C]", "bg-[#1F3E93]", "bg-[#626262]"],
   theme: {
     extend: {
       fontFamily: {
